@@ -1035,6 +1035,7 @@ shouldn't be able to do that. This is accomplished by making the Fruit
 class abstract as well as the eat method inside of it.
 
 <?php
+
 abstract class Fruit {
     private $color;
    

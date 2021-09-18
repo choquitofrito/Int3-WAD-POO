@@ -1,6 +1,28 @@
+- [1. Classes et Objets](#1-classes-et-objets)
+  - [Exercices](#exercices)
+- [2. Déclaration d'une Classe de base](#2-déclaration-dune-classe-de-base)
+- [3. Création des objets: Instanciation](#3-création-des-objets-instanciation)
+  - [3.1. Accès aux propriétés d'un objet](#31-accès-aux-propriétés-dun-objet)
+  - [3.2. Création des méthodes de la classe](#32-création-des-méthodes-de-la-classe)
+  - [## Exercices](#-exercices)
+- [4. Initialisation d\'objets: le Constructeur](#4-initialisation-dobjets-le-constructeur)
+  - [Exercices:](#exercices-1)
+- [5. Héritage en PHP](#5-héritage-en-php)
+  - [Implementation de l'héritage de base](#implementation-de-lhéritage-de-base)
+    - [**1.** Création de la **superclasse**](#1-création-de-la-superclasse)
+    - [**2.**  Créez les **sous-classes**](#2--créez-les-sous-classes)
+  - [Exercices](#exercices-2)
+- [6. Les classées abstraites et les Interfaces](#6-les-classées-abstraites-et-les-interfaces)
+  - [Exercices](#exercices-3)
+- [Annexe : Différence entre classe abstraite et interface (eng)](#annexe--différence-entre-classe-abstraite-et-interface-eng)
+  - [Pourquoi utiliser des classes abstraites au lieu d'une classe normale?](#pourquoi-utiliser-des-classes-abstraites-au-lieu-dune-classe-normale)
+
+<br>
+
+
 # 1. Classes et Objets
 
-**Classe** : représentation abstraite d\'un **objet**. On peut dire
+**Classe** : représentation abstraite d'un **objet**. On peut dire
 aussi un "modèle" pour créer des objets.
 
 Une classe défini un ensemble de **propriétés** (= variables ou constantes) et un ensemble des **méthodes** (fonctions)
@@ -50,8 +72,11 @@ différentes pour ses attributs (l\'attribut **numero** de **compte1** est 666-6
 Les classes peuvent représenter des entités qu'on peut imaginer facilement comme de voitures, de maisons, des employés... mais aussi des entités plus abstraites voire une un fichier d\'image, une connexion à une base de données, une position dans une carte, figure géométrique, un
 bouton d'une interface graphique, un mouvement dans un jeu... il n\'y a pas de limites.
 
+<br>
+
 ## Exercices
----
+
+<br>
 
 * Considérez les propriétés et les méthodes qui pourraient
 constituer les classes qu\'on vient de mentionner
@@ -174,7 +199,7 @@ Pour que les propriétés (=attributs) soient accessibles uniquement depuis les 
 Si on ne peut pas accéder de directement aux propriétés en dehors de la classe... comment est-ce qu\'on peut lire et modifier ses valeurs? **On doit créer des méthodes ("get" et "set") dans la classe pour lire/écrire les propriétés**.
 
 
-# 3.2. Création des méthodes de la classe
+## 3.2. Création des méthodes de la classe
 
 Pour le moment on a une classe contenant uniquement de propriétés, mais on va avoir besoin d\'avoir de méthodes pour les **lire/modifier**. Les méthodes se rajoutent dans la déclaration de la classe (juste après les propriétés ou juste avant).
 
@@ -559,14 +584,47 @@ Par exemple, lorsque vous étendez une classe, la classe **fille hérite de tout
 
 **Exemple:** Considérons une classe pour représenter un lecteur de DVD
 ```php
-!!!!!!!!!!!!
+<?php
+class LecteurDVD {
+    public string $marque;
+    public string $vitesseLecture;
+
+    public function __construct(string $marque, int $vitesseLecture)
+    {
+        $this->marque = $marque;
+        $this->vitesseLecture = $vitesseLecture;
+    }
+    public function lireDVD (){
+        echo "<br>On lit le DVD....";
+    }
+}
+
 ```
 
 Considérons maintenant une classe capable de représenter un appareil de
 DVD capable d\'enregistrer, c.a.d. un lecteur-graveur:
 
 ```php
-!!!!!!!!!!!!
+<?php
+class LecteurGraveurDVD {
+    public string $marque;
+    public string $vitesseLecture;
+    public string $vitesseEnregistrement;
+
+    public function __construct(string $marque, int $vitesseLecture)
+    {
+        $this->marque = $marque;
+        $this->vitesseLecture = $vitesseLecture;
+    }
+
+    public function lireDVD (){
+        echo "<br>On lit le DVD....";
+    }
+    public function enregistrerDVD (){
+        echo "<br>On enregistre un DVD....";
+
+    }
+}
 ```
 
     Note: nous avons mis les attributs en public pour simplifier la classe,
@@ -574,151 +632,163 @@ mais ils devraient être privés
 
 Testez les classes en utilisant ce script:
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+```
 ```php
-    $l1 = new LecteurDVD("Hitachi", 600);
-    $e1 = new LecteurGraveurDVD("Sony", 600,400);
-    $l1->lireDVD();
-    $e1->lireDVD();
-    $e1->enregistrerDVD();
-    var_dump ($l1);
-    var_dump ($e1);
+    <?php
+    
+        include "./LecteurDVD.class.php";
+        include "./LecteurGraveurDVD.class.php";
+        $l1 = new LecteurDVD("Hitachi",600);
+        $e1 = new LecteurGraveurDVD("Sony",600,400);
+        $l1->lireDVD();
+        $e1->lireDVD();
+        $e1->enregistrerDVD();
+        var_dump($l1);
+        var_dump($e1);
+
+    ?>
+```
+```html
+</body>
+</html>
 ```
 
 Cette nouvelle classe est identique à lecteurDVD sauf pour un attribut
 **$vitesseEnregistrement** et la méthode **enregistrer()**. C\'est une
-répétition inutile du code qu\'on peut éviter en utilisant
-**l\'héritage**. On peut dire que les classes LecteurDVD et
-LecterGraveurDVD sont des **spécialisations** d\'une classe de base
-AppareilDVD. Elles doivent posseder tout le contenu de la classe de base
-et, eventuellement, d\'autres propriétés (vitesse d\'enregistrement) et
-méthodes (enregistrer()) en plus.
+répétition inutile du code qu\'on peut éviter en utilisant **l\'héritage**. 
 
-**L\'héritage permet à une ou plusieurs classe (sous-classes) d\'hériter
-tous les attributs et méthodes d\'une autre classe (la
-"superclasse").**
+On peut dire que les classes LecteurDVD et
+LecterGraveurDVD sont des **spécialisations d\'une classe de base** 
+**AppareilDVD**. Elles doivent posseder tout le contenu de la classe de base et, eventuellement, d\'autres propriétés (vitesse d\'enregistrement) et des méthodes (enregistrer()) en plus.
 
-On dit que **"un objet de la sous-classe est un objet de la
-superclasse, mais pas à l\'inverse"** (ex: tous les LecteurGraveurDVD
+**L\'héritage permet à une ou plusieurs classe (sous-classes) d\'hériter tous les attributs et méthodes d\'une autre classe (la "superclasse").**
+
+On dit **qu'un objet de la sous-classe est un objet de la
+superclasse, mais pas à l\'inverse** (ex: tous les LecteurGraveurDVD
 sont des AppareilsDVD mais pas tous les AppareilsDVD sont de
 LecteurGraveursDVD...)
 
 **Comment réaliser** l\'héritage entre les classes?
 
-1.  Créez la **superclasse** ("AppareilDVD" dans ce cas)
 
-**IMPORTANT:** Cette classe contient un constructeur pour les
-propriétés communes à toutes les sous-classes
+## Implementation de l'héritage de base
 
-class AppareilDVD
+<br>
 
+### **1.** Création de la **superclasse** 
+
+(**AppareilDVD** dans ce cas)
+
+<br>
+
+**IMPORTANT:** Cette classe contient un constructeur **pour initialiser les propriétés communes** à toutes les sous-classes
+
+<br>
+
+
+```php
+<?php
+
+class AppareilDVD
 {
+    public $marque;
+    public $vitesseLecture;
 
-    public $marque;
-
-    public $vitesseLecture;
-
-    public function __construct($marque, $vitesseLecture)
-
-    {
-
-        $this->marque = $marque;
-
-        $this->vitesseLecture = $vitesseLecture;
-
-    }
-
-    public function lireDVD()
-
-    {
-
-        echo "<br>Je lis un DVD";
-
-    }
-
-    
-
+    public function __construct(string $marque, int $vitesseLecture)
+    {
+        $this->marque = $marque;
+        $this->vitesseLecture = $vitesseLecture;
+    }
+    public function lireDVD()
+    {
+        echo "<br>On lit le DVD....";
+    }
 }
+```
 
-2.  Créez les **sous-classes** ("LecteurDVD" et "LecteurGraveurDVD")
-    contenant uniquement les propriétés et méthodes propres à chacune
-    (seulement dans la classe LecteurGraveurDVD :
-    **vitesseEnregistrement** et **enregistrer()**)
+<br>
+
+### **2.**  Créez les **sous-classes** 
+
+("LecteurDVDH" et "LecteurGraveurDVDH")
+
+<br>
+
+Ces classes contiennent uniquement les propriétés et méthodes particulières à chacune (**vitesseEnregistrement** et **enregistrer()** dans LecteurGraveurDVDH)
 
 Indiquez (en utilisant le mot clé **extend**) que **les sous-classe
-dérivent (héritent) d\'une superclasse** à notre choix
+dérivent (héritent) d\'une superclasse** à notre choix.
 
-class LecteurDVD extends AppareilDVD
+```php
+<?php
+// fichier LecteurDVDH.class.php
+include_once "./AppareilDVD.class.php";
 
-{
+class LecteurDVDH extends AppareilDVD {
+    public function __construct (string $marque, int $vitesseLecture){
+        parent::__construct ($marque, $vitesseLecture);
 
-    public function __construct($marque, $vitesseLecture)
+    }
+}
+```
 
-    {
+```php
+<?php
+// fichier LecteurGraveurDVDH.class.php
+include_once "./AppareilDVD.class.php";
 
-        parent::__construct($marque, $vitesseLecture);
+class LecteurGraveurDVDH extends AppareilDVD {
+    public int $vitesseEnregistrement;
 
-    }
+    public function __construct(string $marque, 
+                                int $vitesseLecture, 
+                                int $vitesseEnregistrement)
+    {
+        parent::__construct ($marque, $vitesseLecture);
+        $this->vitesseEnregistrement = $vitesseEnregistrement;
+    }
 
+    public function enregistrerDVD (){
+        echo "<br>On enregistre un DVD....";
+
+    }
 }
 
-class LecteurGraveurDVD extends AppareilDVD
+```
 
-{
-
-    public $vitesseEnregistrement;
-
-    public function __construct($marque, $vitesseLecture, $vitesseEnregistrement)
-
-    {
-
-        // propriétés communes
-
-        parent::__construct($marque, $vitesseLecture);
-
-        // propriétés propres
-
-        $this->vitesseEnregistrement = $vitesseEnregistrement;
-
-    }
-
-    public function enregistrerDVD()
-
-    {
-
-        echo "<br>J\'enregistre un DVD";
-
-    }
-
-}
 
 Quelles sont les **conséquences**?
 
-1.  Tous les objets de la sous-classe **contiennent tous les attributs
-    et méthodes publiques et protected** de la superclasse **sauf les
-    privés**
+1.  Tous les objets de la sous-classe **contiennent tous les attributs et méthodes publiques et protected** de la superclasse. Pas les méthodes **privés**
 
 2.  Le constructeur de la sous-classe doit prendre en charge
-    l\'initialisation de ses propres attributs. Pour les attributs
-    hérités, **la sous-classe doit appeler au constructeur de la
-    superclasse**
+    l\'initialisation de ses propres attributs (**parent::**). Pour les attributs hérités, **la sous-classe doit appeler au constructeur de la superclasse**
 
-3.  La superclasse **reste** **intacte** (sauf pour l\'addition du
-    **extends**), ainsi que le code du script principal
+3.  La superclasse **reste** **intacte**, les sous-classes incluent le mot **extends** dans leur déclaration (voir code)
 
-Nous avons gagné en simplicité et cohésion. Si la superclasse change,
-la sous-classe changera aussi car qu\'elle hérite de la superclasse.
->
-Au lieu d\'utiliser public, on aurait pu déclarer les attributs
-**protected** (protégés). Ça a exactement le même effet que les
-déclarer private, mais un attribut/méthode protected sera hérité et un
-private non. L\'avantage de déclarer protected est d\'empêcher aux
-autres programmeurs d\'accéder aux propriétés de notre classe
-directement.
+Nous avons gagné en simplicité et cohésion. Si la superclasse change, la sous-classe changera aussi car qu\'elle hérite de la superclasse.
 
-[]{#_Toc53385014 .anchor}
+Au lieu d\'utiliser public, on aurait pu déclarer les attributs **protected** (protégés). Ça a exactement le même effet que les déclarer private, mais un attribut/méthode protected sera hérité et un
+private ne le sera pas. L\'avantage de déclarer protected est d\'empêcher aux autres programmeurs d\'accéder aux propriétés de notre classe directement.
+
+<br>
 
 Exercices
----------
+---
+
+<br>
 
 1.  Créez les classes Chien et Chat. Créez un ensemble de propriétés et
     méthodes à votre choix pour chaque classe. Trouvez une classe plus
@@ -731,8 +801,7 @@ Exercices
 
 3.  Créez les classes correspondant à un Employé et un Manager. Les
     managers sont comme les employés mais ils ont responsables d\'un
-    département. On peut augmenter le salaire de tous les deux. Quand on
-    l\'augmente, un message s\'affiche et nous indique s\'il s\'agit
+    département. On peut augmenter le salaire de tous les deux. Quand on l\'augmente, un message s\'affiche et nous indique s\'il s\'agit
     d\'un employé ou d\'un Manager.
 
 4.  Modifiez la classe AppareilDVD pour rendre ses attributs protected.
@@ -743,21 +812,20 @@ Exercices
 5.  Créez une classe compteBancaire et une classe compteEpargne.
     Utilisez l\'héritage pour ameliorer votre code
 
-Les classées abstraites et les Interfaces
------------------------------------------
 
-Une **classe abstraite** est une classe qui possède au moins une méthode
-qui n\'est pas implémentée
+<br>
 
-On **ne peut pas créer d\'objets d\'une classe abstraite**, mais **on
-peut créer des objets des classes qui héritent d\'elle**
+
+# 6. Les classées abstraites et les Interfaces
+
+Une **classe abstraite** est une classe qui possède au moins une méthode qui n\'est pas implémentée.
+
+On **ne peut pas créer d\'objets d\'une classe abstraite**, mais **on peut créer des objets des classes qui héritent d\'elle**
 
 Une interface spécifie un ensemble de méthodes qui doivent être
-implémentées par de classes. Une **interface crée un contrat** entre les
-classes mais pas l\'état des objets. Similaire dans son structure à une
-classe abstraite mais elle n\'implémente rien
+implémentées par de classes. Une **interface crée un contrat** entre les classes mais pas l\'état des objets. Similaire dans son structure à une classe abstraite mais elle n\'implémente rien
 
-**Exemple d\'utilisation des interfaces**  au sein d\'un groupe de
+**Exemple d\'utilisation des interfaces** au sein d\'un groupe de
 développeurs on doit créer chacun une classe, mais toutes ces classes
 doivent implémenter un ensemble de méthodes. On crée alors une
 interface. Chaque nouvelle classe crée doit **implémenter** les mêmes
@@ -777,14 +845,16 @@ mais implementer plein d\'interfaces
 Une classe abstraite peut avoir de variables comme propriétés mais une
 interface peut avoir uniquément de constantes
 
-Exercices
----------
+<br>
 
-1.  Nous voulons développer un jeu où on a de véhicules. Nous avons : de
-    camions, de voitures, d\'avions, d\'ultralégers et de véhicules
-    amphibies. Les véhicules sont divisés en roulants, volants et
-    flottants. Modélisez le système et créez les classes en utilisant
-    des interfaces
+
+Exercices
+---
+
+<br>
+
+
+1.  Nous voulons développer un jeu où on a de véhicules. Nous avons : de camions, de voitures, d\'avions, d\'ultralégers et de véhicules amphibies. Les véhicules sont divisés en roulants, volants et flottants. Modélisez le système et créez les classes en utilisant des interfaces
 
 2.  Nous avons besoin de créer un modèle pour un ensemble d\'instruments
     de musique. Tous les instruments peuvent être joués. Il y a des
@@ -808,144 +878,138 @@ pouvoir aussi lutter avec ses mains (le magicien ne peut pas)
 
 5.  Implémentez l\'interface ArrayAccess dans la classe Repertoire
 
-<http://php.net/manual/fr/class.arrayaccess.php>
->
-Observez l\'exemple ci-dessous. Notre objectif est de pouvoir accéder
-aux contacts de l\'Repertoire comment s\'il s\'agissait d\'un array :
+http://php.net/manual/fr/class.arrayaccess.php>
 
+Observez l\'exemple ci-dessous. Notre objectif est de pouvoir accéder aux contacts de l\'Repertoire comment s\'il s\'agissait d\'un array :
+
+
+```php
 $repertoire= new Repertoire();
-
 // rajouter un contact à le repertoire, au lieu de créer une fonction
-
 // $a->rajouterContact()
+$a[]= new Contact("Johnny"); 
+$a[2]= new Contact("Michael"); 
+$a[0]->afficher(); 
+$a[2]->afficher(); 
+if (isset($a[0])){
+echo "<br>Il y a un objet dans l'index 0";
+unset ($a[0]);
+```
 
-$a\[\]= new Contact("Johnny"); 
+<br>
 
-$a\[2\]= new Contact("Michael"); 
+# Annexe : Différence entre classe abstraite et interface (eng)
 
-$a\[0\]->afficher(); 
+Just one more time, in the simplest terms possible:
 
-$a\[2\]->afficher(); 
-
-if (isset($a\[0\])){
-
-echo "\<br /\>Il y a un objet dans l\'index 0";
-
-unset ($a\[0\]);
-
- Différence entre classe abstraite et interface
-----------------------------------------------
-
-Just one more time, in the simplest terms possible:\
-\
 An Interface is like a protocol. It doesn\'t designate the behavior of
 the object; it designates how your code tells that object to act. An
 interface would be like the English Language: defining an interface
 defines how your code communicates with any object implementing that
-interface.\
-\
+interface.
+
 An interface is always an agreement or a promise. When a class says "I
 implement interface Y", it is saying "I promise to have the same
-public methods that any object with interface Y has".\
-\
-On the other hand, an Abstract Class is like a partially built class. It
-is much like a document with blanks to fill in. It might be using
+public methods that any object with interface Y has".
+
+On the other hand, an Abstract Class is like a partially built class. It is much like a document with blanks to fill in. It might be using
 English, but that isn\'t as important as the fact that some of the
-document is already written.\
-\
+document is already written.
+
 An abstract class is the foundation for another object. When a class
 says "I extend abstract class Y", it is saying "I use some methods or
-properties already defined in this other class named Y".\
-\
-So, consider the following PHP:\
-\<?php\
+properties already defined in this other class named Y".
+
+So, consider the following PHP:
+
+<?php
 class X implements Y { } // this is saying that "X" agrees to speak
-language "Y" with your code.\
-\
+language "Y" with your code.
+
 class X extends Y { } // this is saying that "X" is going to complete
-the partial class "Y".\
-?\>\
-\
+the partial class "Y".
+?>
+
 You would have your class implement a particular interface if you were
 distributing a class to be used by other people. The interface is an
-agreement to have a specific set of public methods for your class.\
-\
+agreement to have a specific set of public methods for your class.
+
 You would have your class extend an abstract class if you (or someone
 else) wrote a class that already had some methods written that you want
-to use in your new class.\
-\
-These concepts, while easy to confuse, are specifically different and
-distinct. For all intents and purposes, if you\'re the only user of any
-of your classes, you don\'t need to implement interfaces.
+to use in your new class.
 
-Pourquoi utiliser des classes abstraites au lieu d\'une classe normale?
+These concepts, while easy to confuse, are specifically different and
+distinct. For all intents and purposes, if you're the only user of any
+of your classes, you don't need to implement interfaces.
+
+Pourquoi utiliser des classes abstraites au lieu d'une classe normale?
 -----------------------------------------------------------------------
 
-Here\'s an example that helped me with understanding abstract classes.
-It\'s just a very simple way of explaining it (in my opinion). Lets say
-we have the following code:\
-\
-\<?php\
-class Fruit {\
-    private $color;\
-   \
-    public function eat() {\
-        //chew\
-    }\
-   \
-    public function setColor($c) {\
-        $this->color = $c;\
-    }\
-}\
-\
-class Apple extends Fruit {\
-    public function eat() {\
-        //chew until core\
-    }\
-}\
-\
-class Orange extends Fruit {\
-    public function eat() {\
-        //peel\
-        //chew\
-    }\
-}\
-?\>\
-\
-Now I give you an apple and you eat it.\
-\
-\<?php\
-$apple = new Apple();\
-$apple->eat();\
-?\>\
-\
+Here's an example that helped me with understanding abstract classes.
+It's just a very simple way of explaining it (in my opinion). Lets say
+we have the following code:
+
+<?php
+class Fruit {
+    private $color;
+   
+    public function eat() {
+        //chew
+    }
+   
+    public function setColor($c) {
+        $this->color = $c;
+    }
+}
+
+class Apple extends Fruit {
+    public function eat() {
+        //chew until core
+    }
+}
+
+class Orange extends Fruit {
+    public function eat() {
+        //peel
+        //chew
+    }
+}
+?>
+
+Now I give you an apple and you eat it.
+
+<?php
+$apple = new Apple();
+$apple->eat();
+?>
+
 What does it taste like? It tastes like an apple. Now I give you a
-fruit.\
-\
-\<?php\
-$fruit = new Fruit();\
-$fruit->eat();\
-?\>\
-\
-What does that taste like??? Well, it doesn\'t make much sense, so you
-shouldn\'t be able to do that. This is accomplished by making the Fruit
-class abstract as well as the eat method inside of it.\
-\
-\<?php\
-abstract class Fruit {\
-    private $color;\
-   \
-    abstract public function eat();\
-   \
-    public function setColor($c) {\
-        $this->color = $c;\
-    }\
-}\
-?\>\
-\
+fruit.
+
+<?php
+$fruit = new Fruit();
+$fruit->eat();
+?>
+
+What does that taste like??? Well, it doesn't make much sense, so you
+shouldn't be able to do that. This is accomplished by making the Fruit
+class abstract as well as the eat method inside of it.
+
+<?php
+abstract class Fruit {
+    private $color;
+   
+    abstract public function eat();
+   
+    public function setColor($c) {
+        $this->color = $c;
+    }
+}
+?>
+
 Now just think about a Database class where MySQL and PostgreSQL extend
 it. Also, a note. An abstract class is just like an interface, but you
 can define methods in an abstract class whereas in an interface they are
 all abstract.
 
-(documentation de php: l\'auteur est Alexios Tsiaparas)
+(documentation de php: l'auteur est Alexios Tsiaparas)

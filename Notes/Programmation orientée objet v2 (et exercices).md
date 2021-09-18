@@ -630,7 +630,7 @@ class LecteurGraveurDVD {
     Note: nous avons mis les attributs en public pour simplifier la classe,
 mais ils devraient être privés
 
-Testez les classes en utilisant ce script:
+Testez les classes en utilisant ce script (accueilSansHeritage.php):
 
 ```html
 <!DOCTYPE html>
@@ -780,8 +780,47 @@ Quelles sont les **conséquences**?
 
 Nous avons gagné en simplicité et cohésion. Si la superclasse change, la sous-classe changera aussi car qu\'elle hérite de la superclasse.
 
+Testez le code avec le script accueilAvecHeritage.php :
+
+```php
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+```
+```php
+    <?php
+    
+        include "./LecteurDVDH.class.php";
+        include "./LecteurGraveurDVDH.class.php";
+        $l1 = new LecteurDVDH("Hitachi",600);
+        $e1 = new LecteurGraveurDVDH("Sony",600,400);
+        $l1->lireDVD();
+        $e1->lireDVD();
+        $e1->enregistrerDVD();
+        var_dump($l1);
+        var_dump($e1);
+
+    ?>
+```
+```html
+</body>
+
+</html>
+```
+
+
 Au lieu d\'utiliser public, on aurait pu déclarer les attributs **protected** (protégés). Ça a exactement le même effet que les déclarer private, mais un attribut/méthode protected sera hérité et un
 private ne le sera pas. L\'avantage de déclarer protected est d\'empêcher aux autres programmeurs d\'accéder aux propriétés de notre classe directement.
+
+
 
 <br>
 

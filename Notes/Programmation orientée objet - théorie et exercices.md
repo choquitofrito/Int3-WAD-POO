@@ -4,16 +4,16 @@
 - [3. Création des objets: Instanciation](#3-création-des-objets-instanciation)
   - [3.1. Accès aux propriétés d'un objet](#31-accès-aux-propriétés-dun-objet)
   - [3.2. Création des méthodes de la classe](#32-création-des-méthodes-de-la-classe)
-  - [## Exercices](#-exercices)
+  - [Exercices](#exercices-1)
 - [4. Initialisation d\'objets: le Constructeur](#4-initialisation-dobjets-le-constructeur)
-  - [Exercices:](#exercices-1)
+  - [Exercices:](#exercices-2)
 - [5. Héritage en PHP](#5-héritage-en-php)
   - [Implementation de l'héritage de base](#implementation-de-lhéritage-de-base)
     - [**1.** Création de la **superclasse**](#1-création-de-la-superclasse)
     - [**2.**  Créez les **sous-classes**](#2--créez-les-sous-classes)
-  - [Exercices](#exercices-2)
-- [6. Les classées abstraites et les Interfaces](#6-les-classées-abstraites-et-les-interfaces)
   - [Exercices](#exercices-3)
+- [6. Les classées abstraites et les Interfaces](#6-les-classées-abstraites-et-les-interfaces)
+  - [Exercices](#exercices-4)
 - [Annexe : Différence entre classe abstraite et interface (eng)](#annexe--différence-entre-classe-abstraite-et-interface-eng)
   - [Pourquoi utiliser des classes abstraites au lieu d'une classe normale?](#pourquoi-utiliser-des-classes-abstraites-au-lieu-dune-classe-normale)
 
@@ -283,7 +283,6 @@ ou protected.
 <br>
 
 ## Exercices
----
 
 <br>
 

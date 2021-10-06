@@ -5,7 +5,7 @@
   - [3.1. Accès aux propriétés d'un objet](#31-accès-aux-propriétés-dun-objet)
   - [3.2. Création des méthodes de la classe](#32-création-des-méthodes-de-la-classe)
   - [Exercices](#exercices-1)
-- [4. Initialisation d\'objets: le Constructeur](#4-initialisation-dobjets-le-constructeur)
+- [4. Initialisation d'objets: le Constructeur](#4-initialisation-dobjets-le-constructeur)
   - [Exercices:](#exercices-2)
 - [5. Héritage en PHP](#5-héritage-en-php)
   - [Implementation de l'héritage de base](#implementation-de-lhéritage-de-base)
@@ -28,7 +28,7 @@ aussi un "modèle" pour créer des objets.
 Une classe défini un ensemble de **propriétés** (= variables ou constantes) et un ensemble des **méthodes** (fonctions)
 pour manipuler ces propriétés.
 
-Une **classe est un type de données** (tel que string, integer, boolean, array...) dont la structure est définie par l\'utilisateur (le developpeur !).
+Une **classe est un type de données** (tel que string, integer, boolean, array...) dont la structure est définie par l'utilisateur (le developpeur !).
 
 **Exemple:** une **classe** **CompteBancaire** contient les propriétés numero, solde, type... et les méthodes pour manipuler (accéder et modifier) ces propriétés (obtenirSolde(), rajouterMontant(), changerType()...)
 
@@ -61,16 +61,16 @@ On crée les objets à partir d'un modèle.
 * **type** : « Crédit »
 
 
-On peut lire ou modifier les valeurs de ces propriétés grâce aux méthodes **obtenirSolde**(), **rajouterMontant**() et **changerType**(). On peut rajouter autant de méthodes qu\'on veut... ça dépendra de la fonctionnalité qu\'on veut donner à nos objets.
+On peut lire ou modifier les valeurs de ces propriétés grâce aux méthodes **obtenirSolde**(), **rajouterMontant**() et **changerType**(). On peut rajouter autant de méthodes qu'on veut... ça dépendra de la fonctionnalité qu'on veut donner à nos objets.
 
 
 **Les attributs de la classe peuvent être manipulés uniquement par les méthodes de la classe (principe d'encapsulation)**.
 
 Vu que la classe est un modèle, **on peut créer autant d'objets qu'on veut à partir de ce modèle** et ils seront indépendants (plusieurs comptes bancaires compte1, compte2 etc...). Chaque objet aura de valeurs
-différentes pour ses attributs (l\'attribut **numero** de **compte1** est 666-666666-666 et le **numero** de **compte2** 777-777777-777).
+différentes pour ses attributs (l'attribut **numero** de **compte1** est 666-666666-666 et le **numero** de **compte2** 777-777777-777).
 
-Les classes peuvent représenter des entités qu'on peut imaginer facilement comme de voitures, de maisons, des employés... mais aussi des entités plus abstraites voire une un fichier d\'image, une connexion à une base de données, une position dans une carte, figure géométrique, un
-bouton d'une interface graphique, un mouvement dans un jeu... il n\'y a pas de limites.
+Les classes peuvent représenter des entités qu'on peut imaginer facilement comme de voitures, de maisons, des employés... mais aussi des entités plus abstraites voire une un fichier d'image, une connexion à une base de données, une position dans une carte, figure géométrique, un
+bouton d'une interface graphique, un mouvement dans un jeu... il n'y a pas de limites.
 
 <br>
 
@@ -79,7 +79,7 @@ bouton d'une interface graphique, un mouvement dans un jeu... il n\'y a pas de l
 <br>
 
 * Considérez les propriétés et les méthodes qui pourraient
-constituer les classes qu\'on vient de mentionner
+constituer les classes qu'on vient de mentionner
 
 *  Quelles méthodes rajouteriez-vous dans la classe
 CompteBancaire pour la rendre plus complète?
@@ -102,7 +102,7 @@ class Personne {
     public string $nom;
     public string $prenom;
 
-    // ici les méthodes (on n\'a aucune pour le moment...)
+    // ici les méthodes (on n'a aucune pour le moment...)
 
 }
 ```
@@ -115,16 +115,16 @@ Le code précédant devrait se trouver, par convention, dans un fichier qui port
 **Exemple: Personne.class.php**
 
 On déclare toutes les propriétés et les méthodes entre les accolades.
-Dans ce premier exemple on a uniquement crée deux propriétés $nom et $prenom, et aucune méthode. Pour créer une propriété de la classe **on doit uniquement lui donner un nom précédé du signe $**. C\'est la même syntaxe que pour les variables en PHP. On rajoute le modificateur **public** dont on parlera après.
+Dans ce premier exemple on a uniquement crée deux propriétés $nom et $prenom, et aucune méthode. Pour créer une propriété de la classe **on doit uniquement lui donner un nom précédé du signe $**. C'est la même syntaxe que pour les variables en PHP. On rajoute le modificateur **public** dont on parlera après.
 
 
 <br>
 
 # 3. Création des objets: Instanciation
 
-Une fois la classe est déclarée on peut l'**instancier. Instancier une classe c\'est la même chose que créer des objets** **de la** classe.
-Pour ce faire, on utilise l\'opérateur new **suivi du nom de la
-classe**. Comme pour tous les autres types de données, on doit stocker l\'objet qu\'on crée dans une variable (ex: $person1, $person2...)
+Une fois la classe est déclarée on peut l'**instancier. Instancier une classe c'est la même chose que créer des objets** **de la** classe.
+Pour ce faire, on utilise l'opérateur new **suivi du nom de la
+classe**. Comme pour tous les autres types de données, on doit stocker l'objet qu'on crée dans une variable (ex: $person1, $person2...)
 
 
     Note: Créez un fichier (ex: accueil.php) contenant le code suivant
@@ -165,8 +165,8 @@ classe**. Comme pour tous les autres types de données, on doit stocker l\'objet
 ```
 
 **var_dump** nous indique que $person1 est un **object** de la classe
-**(Personne)**, le premier (**\#1**) qu\'on a créé de la classe
-Personne. Ses propriétés n\'ont pas encore une valeur définie (**NULL**). Pour $person2 c\'est pareil sauf qu\'il s\'agit du deuxième objet créé de la classe Personne. On va voir maintenant comment modifier ces propriétés.
+**(Personne)**, le premier (**\#1**) qu'on a créé de la classe
+Personne. Ses propriétés n'ont pas encore une valeur définie (**NULL**). Pour $person2 c'est pareil sauf qu'il s'agit du deuxième objet créé de la classe Personne. On va voir maintenant comment modifier ces propriétés.
 
 <br>
 
@@ -183,7 +183,7 @@ suivi de l'opérateur **->** (c'est l'équivalent au **.** dans d'autres langag
 
 
 ```php
-// changer les propriétés de l\'objet et l\'afficher
+// changer les propriétés de l'objet et l'afficher
 $person1->nom="Vonnegut"; // modifier la propriété nom
 $person1->prenom="Kurt"; // modifier la propriété prenom
 echo $person1->nom; // lire la propriété, même syntaxe !
@@ -192,16 +192,16 @@ echo "<br>Le prenom est: ".$person1->prenom;
 
 
 En accédant directement aux propriétés, on ne respecte pas le
-**principe d'encapsulation**. Pour simplifier ce concept: **les propriétés de la classe devraient être accédées (lues ou modifiées, peu importe) uniquement par les méthodes de sa propre classe, pas par un code  principale ni par le code d\'une autre classe**. Ce principe est **fondamental** dans la POO.
+**principe d'encapsulation**. Pour simplifier ce concept: **les propriétés de la classe devraient être accédées (lues ou modifiées, peu importe) uniquement par les méthodes de sa propre classe, pas par un code  principale ni par le code d'une autre classe**. Ce principe est **fondamental** dans la POO.
 
 Pour que les propriétés (=attributs) soient accessibles uniquement depuis les méthodes qui se trouvent à l'intérieur de la classe vous devez changer le modificateur d'accès de public à **private**.
 
-Si on ne peut pas accéder de directement aux propriétés en dehors de la classe... comment est-ce qu\'on peut lire et modifier ses valeurs? **On doit créer des méthodes ("get" et "set") dans la classe pour lire/écrire les propriétés**.
+Si on ne peut pas accéder de directement aux propriétés en dehors de la classe... comment est-ce qu'on peut lire et modifier ses valeurs? **On doit créer des méthodes ("get" et "set") dans la classe pour lire/écrire les propriétés**.
 
 
 ## 3.2. Création des méthodes de la classe
 
-Pour le moment on a une classe contenant uniquement de propriétés, mais on va avoir besoin d\'avoir de méthodes pour les **lire/modifier**. Les méthodes se rajoutent dans la déclaration de la classe (juste après les propriétés ou juste avant).
+Pour le moment on a une classe contenant uniquement de propriétés, mais on va avoir besoin d'avoir de méthodes pour les **lire/modifier**. Les méthodes se rajoutent dans la déclaration de la classe (juste après les propriétés ou juste avant).
 
 **Une méthode est** une fonction qui appartient à la classe et qui manipule les propriétés de la classe** (lire ou modifier). Les méthodes reçoivent de paramètres et renvoient des résultats (return).
 La syntaxe est pareille.
@@ -231,7 +231,7 @@ class PersonneP {
 
 Notez que les noms des membres privés sont précédés d'un underscore.
 
-Pour pouvoir accéder aux propriétés depuis l'intérieur de la classe on doit trouver la manière de référencer l'objet courant : **le mot clé $this**. **On l\'utilise quand un objet veut accéder à ses propres propriétés depuis une méthode de la propre classe** (à l'interieur de
+Pour pouvoir accéder aux propriétés depuis l'intérieur de la classe on doit trouver la manière de référencer l'objet courant : **le mot clé $this**. **On l'utilise quand un objet veut accéder à ses propres propriétés depuis une méthode de la propre classe** (à l'interieur de
 setNom et getNom, par exemple, ou dans une fonction qui affiche les
 attributs d'un objet).
 
@@ -241,7 +241,7 @@ Dans les premiers exemples on avait accédé aux propriétés depuis un autre sc
 était possible car les propriétés étaient **publiques**, mais ici on va les
 déclarer **privées** (**private**).
 
-Maintenant qu\'on a créé les méthodes qui accèdent aux propriétés
+Maintenant qu'on a créé les méthodes qui accèdent aux propriétés
 (méthodes get et set), on peut les utiliser depuis le code principal du
 script même si elles sont privées. On doit juste utiliser la
 syntaxe **$nomObjet->nomMethode() :**
@@ -254,7 +254,7 @@ echo "<br>Le nom de PersonneP : ".$person1->getNom();
 // echo $person1->nom; // erreur!! La propriété est privée 
 ```
 
-En utilisant **private** on indique que les propriétés sont accessibles uniquement depuis l\'intérieur de la classe. Cela implique qu\'on sera obligé d'utiliser les méthodes pour accéder aux propriétés. Ce code:
+En utilisant **private** on indique que les propriétés sont accessibles uniquement depuis l'intérieur de la classe. Cela implique qu'on sera obligé d'utiliser les méthodes pour accéder aux propriétés. Ce code:
 
 ```php
 $person1->nom="Connors";
@@ -266,7 +266,7 @@ faire:
 $person1->setNom("Connors");
 
 De façon analogue, les méthodes peuvent être public ou private. Par
-défaut, les éléments d\'une classe sont publiques, mais c\'est une bonne
+défaut, les éléments d'une classe sont publiques, mais c'est une bonne
 habitude de toujours spécifier le modificateur d'accès: public, private
 ou protected.
 
@@ -276,7 +276,7 @@ ou protected.
 
 <br>
 
-1.  Créez une classe CompteBancaire qui contient les informations et les opérations basiques d\'un compte bancaire. Il faut pouvoir obtenir le solde du compte, enlever et rajouter un montant d\'argent. On peut aussi bloquer et débloquer le compte
+1.  Créez une classe CompteBancaire qui contient les informations et les opérations basiques d'un compte bancaire. Il faut pouvoir obtenir le solde du compte, enlever et rajouter un montant d'argent. On peut aussi bloquer et débloquer le compte
 
 2.  Pour la classe PersonneP il nous manque les méthodes pour lire/modifier la propriété « prenom ». Créez-les et testez-les!
 
@@ -284,45 +284,45 @@ ou protected.
 
         "Je suis une personne et je m'appelle <prenom> <nom>!!"
 
-4.  Rajoutez l\'état civil à la classe précédant ainsi que les méthodes pour l\'accéder
+4.  Rajoutez l'état civil à la classe précédant ainsi que les méthodes pour l'accéder
 
-5.  On développe une application d\'e-commerce et on veut représenter
+5.  On développe une application d'e-commerce et on veut représenter
     les produits en utilisant une classe. Les informations à stocker
     seront un code, le nom et le prix de chaque produit. Créez le code
     correspondant à cette classe Product (dans un autre fichier) et
     testez-la. A part des fonctions de base (get et set), créez une
-    autre pour afficher les infos d\'un produit sur le site web.
+    autre pour afficher les infos d'un produit sur le site web.
 
-6.  Rajoutez une méthode à la classe précédente capable d\'obtenir le
+6.  Rajoutez une méthode à la classe précédente capable d'obtenir le
     prix du produit TVAC. La méthode reçoit le taux de TVA
 
 7.  Créez une classe Voiture pour représenter une voiture. Rajoutez
     les propriétés et les méthodes permettant de réaliser les fonctions
-    basiques d\'une voiture.
+    basiques d'une voiture.
 
 8.  Dans la classe Voiture, créez une méthode démarrer(). Dans le
     code de cette méthode on doit appeler une autre méthode
     preparerMoteur() aussi définie dans la classe mais pas accessible
-    depuis l\'extérieur.
+    depuis l'extérieur.
 
-Modifiez la classe Voiture pour qu\'elle ne démarre pas si la
-voiture n\'a pas d\'essence.
+Modifiez la classe Voiture pour qu'elle ne démarre pas si la
+voiture n'a pas d'essence.
 
 9.  Créez une classe Adresse contenant le nom de la rue, le numero et
     un code postal. Créez plusieurs objets adresse et une fonction pour
-    afficher la totalité de l\'adresse.
+    afficher la totalité de l'adresse.
 
-Quand on essaie d\'assigner une rue à l\'adresse, la méthode
-correspondante doit vérifier qu\'il n\'y pas de chiffres dans la
+Quand on essaie d'assigner une rue à l'adresse, la méthode
+correspondante doit vérifier qu'il n'y pas de chiffres dans la
 valeur à assigner.
 
 10.  Décrivez le jeu Tetris et créez une classe pour modeler les
     tétrominos (les pièces)
 
-11.  Modelez** **le personnage d\'un jeu et ses actions** **en
+11.  Modelelisez **le personnage d'un jeu et ses actions** en
     utilisant une classe
 
-12.  Créez une classe Cercle qui contient le radio du cercle et son
+12.  Créez une classe Cercle qui contient le rayon du cercle et son
     centre. Le centre est défini par deux cordonnées numériques
 
 a)  Créez des méthodes get/set pour accéder les coordonnées et le
@@ -331,25 +331,25 @@ a)  Créez des méthodes get/set pour accéder les coordonnées et le
 b)  Créez des méthodes pour définir/obtenir le rayon et les
     coordonnées du centre du cercle
 
-c)  Créez des méthodes pour calculer l\'aire et la circonférence
+c)  Créez des méthodes pour calculer l'aire et la circonférence
 
 d)  Créez une méthode pour afficher toutes les données concernant le
     cercle (centre, aire, circonférence...). Pour afficher le centre
-    et le radio, utilisez les méthodes get au lieu d\'accéder
+    et le radio, utilisez les méthodes get au lieu d'accéder
     directement aux propriétés
 
 13.  Créez une classe CercleA où le centre du cercle est un array de
-    deux valeurs. Observez qu\'on peut réutiliser pratiquement tout le
+    deux valeurs. Observez qu'on peut réutiliser pratiquement tout le
     code.
 
 <br>
 
-# 4. Initialisation d\'objets: le Constructeur
+# 4. Initialisation d'objets: le Constructeur
 
 <br>
 
 Quand on instancie un objet on doit donner des valeurs à ses propriétés.
-Pour le moment on l\'a fait avec les méthodes **set** de chaque classe.
+Pour le moment on l'a fait avec les méthodes **set** de chaque classe.
 Ex:
 
 ```php
@@ -359,9 +359,9 @@ $a1->setPostalCode(1050);
 ```
 
 Si on avait une liste de 10 propriétés on aurait 10 lignes de code juste
-pour l\'initialisation d\'un objet, c'est completement absurde. En plus on pourrait oublier d\'initialiser des propriétés et avoir des problèmes plus tard!.
+pour l'initialisation d'un objet, c'est completement absurde. En plus on pourrait oublier d'initialiser des propriétés et avoir des problèmes plus tard!.
 
-Le **constructeur** (méthode "magique" **__construct()** dans la classe) nous permet de donner des **valeurs aux proprietés d'un objet lors sa création**. Cette fonction est appelée **automatiquement** chaque fois qu\'on crée un objet de la classe où on l\'a déclaré.
+Le **constructeur** (méthode "magique" **__construct()** dans la classe) nous permet de donner des **valeurs aux proprietés d'un objet lors sa création**. Cette fonction est appelée **automatiquement** chaque fois qu'on crée un objet de la classe où on l'a déclaré.
 
 Créons à nouveau la classe Personne, cette fois avec un constructeur (PersonneC):
 
@@ -514,18 +514,18 @@ class PersonneC2 {
 4.  Créez une classe Recette qui représente une recette de cuisine.
     Une recette doit avoir un nom, une description et une liste d'un
     nombre indéfini de couples ingrédient-quantité. Pour stocker la
-    liste d\'ingrédients on va utiliser un array simple.
+    liste d'ingrédients on va utiliser un array simple.
 
 Vous devez créer un constructeur qui reçoit uniquement le nom de la
 recette. Créez les méthodes nécessaires pour rajouter des ingrédients
 un par un à la recette. Créez une méthode pour afficher la liste
-d\'ingrédients.
+d'ingrédients.
 
 
-5.  Créez une classe Triangle qui contient les trois sommets d\'un
+5.  Créez une classe Triangle qui contient les trois sommets d'un
     triangle (trois couples de cordonnées (x,y)) ainsi que la couleur de
     remplissage. On peut afficher les trois cordonnées et "déplacer"
-    le triangle. Les coordonnés son créés à l\'extérieur de la
+    le triangle. Les coordonnés son créés à l'extérieur de la
     classe.
 
 
@@ -538,7 +538,7 @@ les méthodes suivants:
 tous les films de la table Films
 
 **obtenirFilmId**($id): renvoie un array contenant toutes les données
-d\'un film choisi par id
+d'un film choisi par id
 
 **obtenirFilmTitre** ($titre): renvoie un array contenant toutes les
 données des films qui ont un certain titre
@@ -550,10 +550,10 @@ toutes les données des films produits entre deux dates
 les données du film à insérer
 
 **supprimerFilm** ($id): efface un film de la BD. La méthode doit
-recevoir l\'id du film à effacer
+recevoir l'id du film à effacer
 
-Rajoutez vous-mêmes les méthodes qui pourraient s\'avérer utiles
-pour la création d\'un site de critique de films
+Rajoutez vous-mêmes les méthodes qui pourraient s'avérer utiles
+pour la création d'un site de critique de films
 
 
 <br>
@@ -562,8 +562,8 @@ pour la création d\'un site de critique de films
 
 <br>
 
-L\'héritage est un des grands principes de la programmation orientée
-objet, et PHP l\'implémente dans son modèle objet. Ce principe va
+L'héritage est un des grands principes de la programmation orientée
+objet, et PHP l'implémente dans son modèle objet. Ce principe va
 **affecter la manière dont de nombreuses classes sont en relation les unes avec les autres**.
 
 Par exemple, lorsque vous étendez une classe, la classe **fille hérite de toutes les méthodes publiques et protégées (protected) de la classe mère**.
@@ -591,7 +591,7 @@ class LecteurDVD {
 ```
 
 Considérons maintenant une classe capable de représenter un appareil de
-DVD capable d\'enregistrer, c.a.d. un lecteur-graveur:
+DVD capable d'enregistrer, c.a.d. un lecteur-graveur:
 
 ```php
 <?php
@@ -656,21 +656,21 @@ Testez les classes en utilisant ce script (accueilSansHeritage.php):
 ```
 
 Cette nouvelle classe est identique à lecteurDVD sauf pour un attribut
-**$vitesseEnregistrement** et la méthode **enregistrer()**. C\'est une
-répétition inutile du code qu\'on peut éviter en utilisant **l\'héritage**. 
+**$vitesseEnregistrement** et la méthode **enregistrer()**. C'est une
+répétition inutile du code qu'on peut éviter en utilisant **l'héritage**. 
 
 On peut dire que les classes LecteurDVD et
-LecterGraveurDVD sont des **spécialisations d\'une classe de base** 
-**AppareilDVD**. Elles doivent posseder tout le contenu de la classe de base et, eventuellement, d\'autres propriétés (vitesse d\'enregistrement) et des méthodes (enregistrer()) en plus.
+LecterGraveurDVD sont des **spécialisations d'une classe de base** 
+**AppareilDVD**. Elles doivent posseder tout le contenu de la classe de base et, eventuellement, d'autres propriétés (vitesse d'enregistrement) et des méthodes (enregistrer()) en plus.
 
-**L\'héritage permet à une ou plusieurs classe (sous-classes) d\'hériter tous les attributs et méthodes d\'une autre classe (la "superclasse").**
+**L'héritage permet à une ou plusieurs classe (sous-classes) d'hériter tous les attributs et méthodes d'une autre classe (la "superclasse").**
 
 On dit **qu'un objet de la sous-classe est un objet de la
-superclasse, mais pas à l\'inverse** (ex: tous les LecteurGraveurDVD
+superclasse, mais pas à l'inverse** (ex: tous les LecteurGraveurDVD
 sont des AppareilsDVD mais pas tous les AppareilsDVD sont de
 LecteurGraveursDVD...)
 
-**Comment réaliser** l\'héritage entre les classes?
+**Comment réaliser** l'héritage entre les classes?
 
 
 ## Implementation de l'héritage de base
@@ -719,7 +719,7 @@ class AppareilDVD
 Ces classes contiennent uniquement les propriétés et méthodes particulières à chacune (**vitesseEnregistrement** et **enregistrer()** dans LecteurGraveurDVDH)
 
 Indiquez (en utilisant le mot clé **extend**) que **les sous-classe
-dérivent (héritent) d\'une superclasse** à notre choix.
+dérivent (héritent) d'une superclasse** à notre choix.
 
 ```php
 <?php
@@ -764,11 +764,11 @@ Quelles sont les **conséquences**?
 1.  Tous les objets de la sous-classe **contiennent tous les attributs et méthodes publiques et protected** de la superclasse. Pas les méthodes **privés**
 
 2.  Le constructeur de la sous-classe doit prendre en charge
-    l\'initialisation de ses propres attributs (**parent::**). Pour les attributs hérités, **la sous-classe doit appeler au constructeur de la superclasse**
+    l'initialisation de ses propres attributs (**parent::**). Pour les attributs hérités, **la sous-classe doit appeler au constructeur de la superclasse**
 
 3.  La superclasse **reste** **intacte**, les sous-classes incluent le mot **extends** dans leur déclaration (voir code)
 
-Nous avons gagné en simplicité et cohésion. Si la superclasse change, la sous-classe changera aussi car qu\'elle hérite de la superclasse.
+Nous avons gagné en simplicité et cohésion. Si la superclasse change, la sous-classe changera aussi car qu'elle hérite de la superclasse.
 
 Testez le code avec le script accueilAvecHeritage.php :
 
@@ -807,8 +807,8 @@ Testez le code avec le script accueilAvecHeritage.php :
 ```
 
 
-Au lieu d\'utiliser public, on aurait pu déclarer les attributs **protected** (protégés). Ça a exactement le même effet que les déclarer private, mais un attribut/méthode protected sera hérité et un
-private ne le sera pas. L\'avantage de déclarer protected est d\'empêcher aux autres programmeurs d\'accéder aux propriétés de notre classe directement.
+Au lieu d'utiliser public, on aurait pu déclarer les attributs **protected** (protégés). Ça a exactement le même effet que les déclarer private, mais un attribut/méthode protected sera hérité et un
+private ne le sera pas. L'avantage de déclarer protected est d'empêcher aux autres programmeurs d'accéder aux propriétés de notre classe directement.
 
 
 
@@ -822,24 +822,24 @@ Exercices
 1.  Créez les classes Chien et Chat. Créez un ensemble de propriétés et
     méthodes à votre choix pour chaque classe. Trouvez une classe plus
     générale contenant tous les propriétés communes à ces deux classes
-    et utilisez l\'héritage pour éviter la duplication du code.
+    et utilisez l'héritage pour éviter la duplication du code.
 
 2.  Créez les classes Camion, Moto et Bus. Créez un ensemble de
-    propriétés et méthodes à votre choix. Utilisez l\'héritage pour
+    propriétés et méthodes à votre choix. Utilisez l'héritage pour
     éviter la duplication du code.
 
 3.  Créez les classes correspondant à un Employé et un Manager. Les
-    managers sont comme les employés mais ils ont responsables d\'un
-    département. On peut augmenter le salaire de tous les deux. Quand on l\'augmente, un message s\'affiche et nous indique s\'il s\'agit
-    d\'un employé ou d\'un Manager.
+    managers sont comme les employés mais ils ont responsables d'un
+    département. On peut augmenter le salaire de tous les deux. Quand on l'augmente, un message s'affiche et nous indique s'il s'agit
+    d'un employé ou d'un Manager.
 
 4.  Modifiez la classe AppareilDVD pour rendre ses attributs protected.
     Vous allez avoir une erreur si vous exécutez le même code du script
-    principal (manque d\'accès). Créez les getters et les setters
+    principal (manque d'accès). Créez les getters et les setters
     nécessaires pour pouvoir les accéder depuis le script principal.
 
 5.  Créez une classe compteBancaire et une classe compteEpargne.
-    Utilisez l\'héritage pour ameliorer votre code
+    Utilisez l'héritage pour ameliorer votre code
 
 
 <br>
@@ -847,29 +847,29 @@ Exercices
 
 # 6. Les classées abstraites et les Interfaces
 
-Une **classe abstraite** est une classe qui possède au moins une méthode qui n\'est pas implémentée.
+Une **classe abstraite** est une classe qui possède au moins une méthode qui n'est pas implémentée.
 
-On **ne peut pas créer d\'objets d\'une classe abstraite**, mais **on peut créer des objets des classes qui héritent d\'elle**
+On **ne peut pas créer d'objets d'une classe abstraite**, mais **on peut créer des objets des classes qui héritent d'elle**
 
 Une interface spécifie un ensemble de méthodes qui doivent être
-implémentées par de classes. Une **interface crée un contrat** entre les classes mais pas l\'état des objets. Similaire dans son structure à une classe abstraite mais elle n\'implémente rien
+implémentées par de classes. Une **interface crée un contrat** entre les classes mais pas l'état des objets. Similaire dans son structure à une classe abstraite mais elle n'implémente rien
 
-**Exemple d\'utilisation des interfaces** au sein d\'un groupe de
+**Exemple d'utilisation des interfaces** au sein d'un groupe de
 développeurs on doit créer chacun une classe, mais toutes ces classes
 doivent implémenter un ensemble de méthodes. On crée alors une
 interface. Chaque nouvelle classe crée doit **implémenter** les mêmes
-méthodes, définies dans l\'interface mais pas implémentées dans
-l\'interface. Ils peuvent bien sûr rajouter leur propre contenu à leurs
+méthodes, définies dans l'interface mais pas implémentées dans
+l'interface. Ils peuvent bien sûr rajouter leur propre contenu à leurs
 classes
 
-**Exemple d\'utilisation d\'une classe abstraite:** on pourrait se
+**Exemple d'utilisation d'une classe abstraite:** on pourrait se
 trouver dans la situation precedante, mais cette fois une partie de la
 classe (abstraite) est déjà implémentée. Les nouvelles classes
 **héritent** de cette classe abstraite
 
-Un **classe peut implémenter autant d\'interfaces qu\'on veut**, mais
-hériter uniquement d\'une classe. Une classe peut hériter d\'une classe
-mais implementer plein d\'interfaces
+Un **classe peut implémenter autant d'interfaces qu'on veut**, mais
+hériter uniquement d'une classe. Une classe peut hériter d'une classe
+mais implementer plein d'interfaces
 
 Une classe abstraite peut avoir de variables comme propriétés mais une
 interface peut avoir uniquément de constantes
@@ -883,9 +883,9 @@ Exercices
 <br>
 
 
-1.  Nous voulons développer un jeu où on a de véhicules. Nous avons : de camions, de voitures, d\'avions, d\'ultralégers et de véhicules amphibies. Les véhicules sont divisés en roulants, volants et flottants. Modélisez le système et créez les classes en utilisant des interfaces
+1.  Nous voulons développer un jeu où on a de véhicules. Nous avons : de camions, de voitures, d'avions, d'ultralégers et de véhicules amphibies. Les véhicules sont divisés en roulants, volants et flottants. Modélisez le système et créez les classes en utilisant des interfaces
 
-2.  Nous avons besoin de créer un modèle pour un ensemble d\'instruments
+2.  Nous avons besoin de créer un modèle pour un ensemble d'instruments
     de musique. Tous les instruments peuvent être joués. Il y a des
     instruments de percussion, à corde et à vent. Les instruments à vent
     peuvent être en bois ou en metal
@@ -893,23 +893,23 @@ Exercices
 3.  Vous êtes en train de créer un jeu. Vous avez plusieurs types de
     caractères : les magiciens, les épéistes et les voleurs. Chaque type
     a ses particularités : les magiciens lancent de sorts et sont
-    capables de méditer, les épéistes peuvent se battre à l\'épée et les
-    voleurs peuvent s\'infiltrer dans un groupe. Malheureusement les
+    capables de méditer, les épéistes peuvent se battre à l'épée et les
+    voleurs peuvent s'infiltrer dans un groupe. Malheureusement les
     magiciens ne savent pas se battre autrement qu'on lançant de sorts.
 
-Les guerriers et les voleurs sont des héros d\'action : ils doivent
+Les guerriers et les voleurs sont des héros d'action : ils doivent
 pouvoir aussi lutter avec ses mains (le magicien ne peut pas)
 
-4.  Créez une nouvelle version de votre code en considérant qu\'il
+4.  Créez une nouvelle version de votre code en considérant qu'il
     existe un nouveau type de personnage (GuerrierSorcier) qui a toutes
-    les habilités d\'un guerrier en plus de pouvoir lancer de sorts. Il
+    les habilités d'un guerrier en plus de pouvoir lancer de sorts. Il
     ne sait pas méditer.
 
-5.  Implémentez l\'interface ArrayAccess dans la classe Repertoire
+5.  Implémentez l'interface ArrayAccess dans la classe Repertoire
 
 http://php.net/manual/fr/class.arrayaccess.php>
 
-Observez l\'exemple ci-dessous. Notre objectif est de pouvoir accéder aux contacts de l\'Repertoire comment s\'il s\'agissait d\'un array :
+Observez l'exemple ci-dessous. Notre objectif est de pouvoir accéder aux contacts de l'Repertoire comment s'il s'agissait d'un array :
 
 
 ```php
@@ -931,7 +931,7 @@ unset ($a[0]);
 
 Just one more time, in the simplest terms possible:
 
-An Interface is like a protocol. It doesn\'t designate the behavior of
+An Interface is like a protocol. It doesn't designate the behavior of
 the object; it designates how your code tells that object to act. An
 interface would be like the English Language: defining an interface
 defines how your code communicates with any object implementing that
@@ -942,7 +942,7 @@ implement interface Y", it is saying "I promise to have the same
 public methods that any object with interface Y has".
 
 On the other hand, an Abstract Class is like a partially built class. It is much like a document with blanks to fill in. It might be using
-English, but that isn\'t as important as the fact that some of the
+English, but that isn't as important as the fact that some of the
 document is already written.
 
 An abstract class is the foundation for another object. When a class

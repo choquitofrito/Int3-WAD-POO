@@ -600,10 +600,11 @@ class LecteurGraveurDVD {
     public string $vitesseLecture;
     public string $vitesseEnregistrement;
 
-    public function __construct(string $marque, int $vitesseLecture)
+    public function __construct(string $marque, int $vitesseLecture, int $vitesseEnregistrement)
     {
         $this->marque = $marque;
         $this->vitesseLecture = $vitesseLecture;
+        $this->vitesseEnregistrement = $vitesseEnregistrement;
     }
 
     public function lireDVD (){

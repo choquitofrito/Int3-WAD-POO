@@ -1,6 +1,7 @@
 <?php
 
 class PersonneNC {
+    
     public function __construct(
         private string $nom = "", 
         private string $prenom = "")

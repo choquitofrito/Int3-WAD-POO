@@ -216,24 +216,14 @@ class PersonneP {
     private string $prenom;
     private string $nom;
 
-    /**
-     * Obtenir la valeur de nom
-     */ 
-    public function getNom()
+    public function getNom():string
     {
         return $this->nom;
     }
 
-    /**
-     * Modifier la valeur de nom
-     *
-     * @return  self
-     */ 
-    public function setNom($nom)
+    public function setNom(string $nom):void
     {
         $this->nom = $nom;
-
-        return $this;
     }
 }
 

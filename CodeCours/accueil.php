@@ -36,6 +36,10 @@
     $p6 = new PersonneNC();
     var_dump ($p6);
 
+
+
+
+    
     ?>
 </body>
 

@@ -1,10 +1,15 @@
 <?php
 
 class Voiture extends Vehicule implements IRoulant {
-    public function rouler(): void
+    public function roulerEnVille(): void
     {
-        echo "<br>Je suis une voiture et je roule!!";
+        echo "<br>Je suis une voiture et je roule en ville!!";
     }
+    public function roulerEnRoute(): void
+    {
+        echo "<br>Je suis une voiture et je roule en route!!";
+    }
+
     
 }
 

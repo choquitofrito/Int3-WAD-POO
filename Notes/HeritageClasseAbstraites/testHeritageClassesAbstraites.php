@@ -19,9 +19,14 @@
     $chat1 = new Chat("blanc",5,"./classes/images/chat1.jpg",true);
     $chien1->afficher();
     $chat1->afficher();
-    var_dump ($chien1);
-    var_dump ($chat1);
+    $chat1->manger();
+    $chien1->manger();
+    $chien1->dormir();
+    $chat1->dormir();
+    // $animal1 = new Animal("vert",5,"coco.png"); // on ne peut pas instantier une classe abstraite
+    
 
+    
 
 
 

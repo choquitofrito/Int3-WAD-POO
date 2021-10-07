@@ -8,5 +8,9 @@ class Chien extends Animal
     public function aboyer (){
         echo "<br>WARFFFFFFFFFFFFFFFFF!";
     }
+    public function manger(): void
+    {
+        echo "<br>Je mange de chats!!!";
+    }
     
 }

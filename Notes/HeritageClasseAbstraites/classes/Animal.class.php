@@ -1,15 +1,24 @@
 <?php
 
-class Animal
+// Animal sera une classe abstraite
+// Animal est superclasse de Chien et Chat
+abstract class Animal
 {
-    // protected string $couleur;
-    // protected int $nombrePattes;
-
     public function __construct(
         protected string $couleur,
         protected int $nombrePattes,
         protected string $lienImg
     ) {
+    }
+    // toutes les classes qui héritent de cette classe doivent implementer cette méthode
+    // (ou elles-mêmes deviendront abstraites)
+    // Chaque classe l'implement d'une manière différente
+    abstract public function manger():void;
+
+    // toutes les sous-classes le font de la même manière, on implemente la méthode
+    // dans la super-classe
+    public function dormir (){
+        echo "<br>Je dors ZZZZZZZZZZZZZZZ......";
     }
 
     /**

@@ -19,7 +19,7 @@
         $lecteur->lireDVD();
         $graveur->lireDVD();
         $graveur->graver();
-
+        // var_dump ($lecteur->vitesseLecture);
 
 
     ?>

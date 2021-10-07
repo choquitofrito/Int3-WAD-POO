@@ -12,7 +12,7 @@ class AppareilDVD
     // ) {}
 
     public string $marque;
-    public int $vitesseLecture;
+    protected int $vitesseLecture;
 
     public function __construct(string $marque, int $vitesseLecture){
         $this->marque = $marque;

@@ -241,7 +241,11 @@ leurs packages sur Packagist**. Un package n'a pas besoin d'être sur
 Packagist pour être utilisée par Composer, mais elle permet la
 découverte et l'adoption par d'autres développeurs plus rapidement.
 
+<br>
+
 ## Chargement des Packages : autoload de base
+
+<br>
 
 Une fois les Packages se trouvent dans le dossier de notre projet, on
 doit les « inclure » dans nos scripts (pages).

@@ -12,6 +12,10 @@
     <?php
     include_once "./vendor/autoload.php";
     $c1 = new Contact("De Decken", "Julie");
+    $c2 = new Contact("Hughes", "Laure");
+    // var_dump ($c1);
+
+
 
     ?>
 </body>

@@ -14,7 +14,14 @@
     $c1 = new Contact("De Decken", "Julie");
     $c2 = new Contact("Hughes", "Laure");
     // var_dump ($c1);
+    $r1 = new Repertoire("repertoire GSM");
+    // var_dump ($r1);
 
+    $r1->addContact ($c1);
+    $r1->addContact ($c2);
+    var_dump ($r1);
+
+    $r1->afficher();
 
 
     ?>

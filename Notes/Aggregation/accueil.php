@@ -19,9 +19,10 @@
 
     $r1->addContact ($c1);
     $r1->addContact ($c2);
-    var_dump ($r1);
+    // var_dump ($r1);
 
     $r1->afficher();
+
 
 
     ?>

@@ -11,6 +11,13 @@ class Contact {
         $this->prenom = $prenom;
     }
 
+    public function afficherContact (){
+        echo "<br>";
+        echo "Prénom: ".$this->getPrenom();
+        echo "<br>";
+        echo "Nom: ".$this->getNom();
+    }
+
     /**
      * Get the value of nom
      */ 

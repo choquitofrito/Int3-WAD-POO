@@ -7,7 +7,7 @@ Composer est un gestionnaire de dépendances, c'est à dire un logiciel qui nous
 **Exemple:** Si on veut includre un Captcha avec **PHP Captcha** dans notre projet, Composer nous aidera à télécharger le package (dans une version choisie qui pourra changer) et à l'inclure dans notre projet (grace à la création d'un fichier autoload)
 
 **Il traite les «packages» per projet**. On peut installer des packages globalement mais ça fait du sens uniquement pour de packages qui sont utilisées par tous nous projets (ex: PHPUnit). 
-Par défaut, Composer install les packages dans un répertoire (par défaut **vendor**) **dans votre projet**.
+Par défaut, Composer installera les packages dans un répertoire (par défaut **vendor**) **dans votre projet**.
 
 Faisons quand-même la différence entre Biliothèque et Package:
 
@@ -176,21 +176,19 @@ catch (Exception $e) {
 
 <br>
 
-**La première fois** qu'on lance composer install, Composer lira le fichier composer.json et téléchargera la version indiquée de chaque package, en plus de créer le fichier composer.lock** qui spécifie les **packages installés et leur version**. Après avoir installé les
+**La première fois** qu'on lance composer install, Composer lira le fichier composer.json et téléchargera la version indiquée de chaque package, en plus de créer le fichier composer.lock qui spécifie les **packages installés et leur version**. Après avoir installé les
 dépendances, Composer écrit la liste des versions exactes actuellement installées dans un fichier composer.lock. Cela **verrouille le projet à ces versions spécifiques.** 
 
 Voici pouquoi :
 
-La commande d'installation **« composer install » vérifie toujours si
+La commande d'installation **composer install** vérifie toujours si
 un fichier de verrouillage (composer.lock) est présent. Si le fichier
-existe, il télécharge les versions qui correspondent au composer.lock**
+existe, il télécharge les versions qui correspondent au composer.lock
 indépendamment de ce que indique composer.json au moment de lancer la
 commande (car on a pu le changer entre temps)
 
 **Cela signifie que quiconque configure le projet téléchargera la même version des dépendances**. Votre serveur CI, les machines de production,
-les autres développeurs de votre équipe, **tout le monde fonctionne sur
-les mêmes dépendances, ce qui atténue le risque de bugs affectant
-seulement certaines parties des déploiements**. Même si vous développez
+les autres développeurs de votre équipe, **tout le monde fonctionne sur les mêmes dépendances, ce qui atténue le risque de bugs affectant seulement certaines parties des déploiements**. Même si vous développez
 seul, dans six mois lors de la réinstallation du projet, vous pouvez
 être sûr que les dépendances installées fonctionnent toujours même si
 vos dépendances ont publié de nombreuses nouvelles versions depuis.
@@ -208,16 +206,12 @@ composer.json).
 
 <br>
 
-Si **l'une des dépendances est mise à jour**, vous **n'obtiendrez pas ces mises à jour automatiquement**. Pour mettre à jour la nouvelle version, utilisez la commande **composer update**
+Si **l'une des dépendances est mise à jour** (= changer la version dans composer.json) et 
+un composer.lock existe,  
+vous **n'obtiendrez pas ces mises à jour automatiquement** au moment de faire composer install. 
+Pour ce faire, utilisez la commande **composer update**, car  **cela récupérera les versions indiquées dans composer.json** et mettra également à jour le fichier composer.lock avec la nouvelle version.
 
-**Cela récupérera les versions indiquées dans composer.json** et mettra
-également à jour le fichier de verrouillage avec la nouvelle version.
-
-**Remarque:** Composer affichera un **avertissement lors de
-l'exécution de composer install**
-
-**si composer.lock et composer.json ne sont pas synchronisés** (ex :
-changez le composer.json et mettez la version 1.1)
+**Remarque:** Composer affichera un **avertissement lors de l'exécution de composer install** **si composer.lock et composer.json n'ont pas le même contenu** 
 
 Si vous souhaitez uniquement installer ou mettre à jour une dépendance, vous pouvez l'indiquer de façon explicite avec **composer update monolog/monolog** dans la console
 

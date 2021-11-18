@@ -5,6 +5,8 @@ class Contact {
     public string $nom;
     public string $prenom;
 
+    // public Repertoire $repertoire;
+
     public function __construct(string $nom, string $prenom)
     {
         $this->nom = $nom;

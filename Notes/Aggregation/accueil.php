@@ -23,6 +23,9 @@
 
     $r1->afficher();
 
+    // $repManager = new RepertoireManager($bdd);
+    // $repManager->insert ($r1);
+
 
 
     ?>

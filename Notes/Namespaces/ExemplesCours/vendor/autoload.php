@@ -1,6 +1,8 @@
 <?php
 
 spl_autoload_register (function (string $nomClasse){
+
+    echo "<br>Le nom de la classe qu'on veut charger est : " . $nomClasse;
     
     // à nous de choisir où se trouvent les classes
     // et dans quel format

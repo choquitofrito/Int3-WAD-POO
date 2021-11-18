@@ -1,5 +1,7 @@
 <?php
 
+namespace Shop\Basket;
+
 class Basket
 {
     public int $id;

@@ -8,9 +8,9 @@
 </head>
 <body>
     <?php
-        
-        $p1 = new Product(4);
-        $b1 = new Basket(5);
+        include "./vendor/autoload.php";
+        $p1 = new \Shop\Basket\Product(4);
+        $b1 = new \Shop\Basket\Basket(5);
         
     ?>
 </body>

@@ -1,0 +1,4 @@
+[2021-11-18 15:53:29] monLogger.INFO: Une erreur s'est produite dans la connexion [] []
+[2021-11-18 16:00:28] monLogger.INFO: Une erreur s'est produite dans la connexion [] []
+[2021-11-18 16:00:34] monLogger.INFO: Une erreur s'est produite dans la connexion [] []
+[2021-11-18 16:00:42] monLogger.INFO: Une erreur s'est produite dans la connexion [] []

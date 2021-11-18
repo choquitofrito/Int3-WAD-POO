@@ -69,9 +69,56 @@ Nous allons voir ces concepts avec un exemple pratique.
 
 <br>
 
-# 4. Utilisation de Composer : exemple pratique
+# 4. Utilisation de Composer : Exemple pratique 1
+
+## 4.1. Exemple pratique 1 : Spatie (manipulation d'images) - utilisation de composer require
 
 <br>
+
+Nous allons utiliser une libraire de manipulation d'images (**Spatie** - https://spatie.be/docs/image/v1/introduction).
+Cette librairie nous permet de modifier un tas de caracteristiques des images (sepia, blanc et noir, dimensions, crop etc...)
+
+Nous allons developper un exemple où nous prendrons une image et créerons une copie en noir et blanc.
+Nous **allons importer le package avec composer**. Pour cet exemple nous utiliserons la méthode de la console **composer require**.
+
+Voici la procedure:
+
+1. Créez un dossier vide (ex: ManipImages) et un fichier accueil.php
+2. Créez un dossier **images** à l'intérieur, contenant une image téléchargé sur Internet (l'image à transformer)
+3. Créez une page de base et les balises php
+4. Téléchargez la librairie en utilisant la commande de console **composer require**
+
+```
+composer require spatie/image
+```
+5. Observez que le code a été téléchargé dans vendor. **Faites include de l'autoload fourni par composer**
+dans votre script (**include './vendor/autoload.php'**)
+6. Utilisez les méthodes de la classe pour créer une copie noir et blanc de l'image
+(choisissez un nom pour la nouvelle image)
+
+```php
+use Spatie\Image\Image;
+
+include "./vendor/autoload.php";
+
+// overwriting the original image with a greyscale version   
+Image::load("./images/princessemononoke.jpg")
+        ->greyscale()
+        ->save("./images/princessemononoke-bw.jpg");
+```
+7. Chargez la page et observez comment un nouveau fichier a été crée dans le dossier **images**.
+8. Observez le contenu du fichier **composer.json**. 
+Le fichier a été modifié quand vous avez fait **composer require**. 
+Vous pouvez modifier ce fichier au lieu d'utiliser la commande **composer require**, on voit cette méthode dans l'exemple qui suit.
+
+<br>
+
+
+## 4.2. Utilisation de Composer : Exemple pratique 2 - création ou édition à la main du composer.json
+
+<br>
+
+Dans **cet exemple on change directement le fichier composer.json** au lieu d'utiliser **composer require**.
 
 Considérons un projet où on réalise une connexion à une BD. Nous voulons créer un fichier de log à chaque fois qu'il a une erreur de connexion à la BD (le but est d'avoir un registre d'erreurs pour pouvoir les tracer plus tard et trouver de solutions).  
 
@@ -79,11 +126,11 @@ Nous allons  télécharger un package qui permet de générer de fichiers de **l
 
 <br>
 
-### **4.1.**  Créez un dossier contenant un page qui fasse un SELECT dans la BD (prenez un exemple déjà fait)
+### **4.2.1.**  Créez un dossier contenant un page qui fasse un SELECT dans la BD (prenez un exemple déjà fait)
 
 <br>
 
-### **4.2.**  Créez un fichier **composer.json** dans la racine du projet. Spécifiez une dépendance utilisant ce format :
+### **4.2.2.**  Créez un fichier **composer.json** dans la racine du projet. Spécifiez une dépendance utilisant ce format :
 <br>
 
 ```json
@@ -110,7 +157,7 @@ sans inclure la derniere)
 <br>
 
 
-### **4.3.** **Installation des dépendances** du projet : **composer install**
+### **4.2.3.** **Installation des dépendances** du projet : **composer install**
 
 <br>
 
@@ -136,7 +183,7 @@ composer remove twig/twig --update-with-dependencies
 
 <br>
 
-### **4.4.** Testez la fonctionnalité du package dans votre code PHP. 
+### **4.2.4.** Testez la fonctionnalité du package dans votre code PHP. 
 
 Nous voulons générer un log à chaque erreur de connexion. Profitons du fait que le bloc qui traite l'exception de l'erreur de connexion existe!
 

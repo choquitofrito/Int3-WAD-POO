@@ -1,0 +1,26 @@
+{
+    "name": "bagwaa/really-funny-jokes",
+    "description": "Just some really funny jokes, clearly what every PHP application needs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Richard Bagshaw",
+            "email": "me@richardbagshaw.co.uk"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bagwaa\\ReallyFunnyJokes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bagwaa\\ReallyFunnyJokes\\Tests\\": "tests/"
+        }
+    }
+}

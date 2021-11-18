@@ -1,5 +1,4 @@
 <?php
-
 spl_autoload_register (function (string $nomClasse){
     
     // à nous de choisir où se trouvent les classes

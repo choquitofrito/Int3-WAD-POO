@@ -296,7 +296,10 @@ automatique (**autoload**), Composer génère un fichier
 vendor/autoload.php. Vous pouvez simplement inclure ce fichier et vous
 obtiendrez l'autoloading automatiquement.
 
-require \_\_DIR\_\_ . '/vendor/autoload.php';
+```
+require __DIR__ . '/vendor/autoload.php';
+```
+( \_\_DIR\_\_ est le dossier du script où le code se trouve)
 
 **Cela rend très facile à utiliser le code de tiers**. Par exemple : Si
 votre projet dépend de Monolog, vous pouvez simplement commencer à

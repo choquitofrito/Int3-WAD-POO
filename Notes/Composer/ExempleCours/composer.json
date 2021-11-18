@@ -1,7 +1,0 @@
-{
-    "require":{
-        "monolog/monolog": "1.0.*",
-        "bagwaa/really-funny-jokes": "^1.0",
-        "spatie/image": "^2.2"
-    }
-}

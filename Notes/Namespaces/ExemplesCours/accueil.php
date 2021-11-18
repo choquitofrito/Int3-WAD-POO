@@ -12,9 +12,11 @@
     <?php
 
     include "./vendor/autoload.php";
+
+
     $p1 = new \Shop\Basket\Product(4);
+    $p2 = new \Shop\BasketFake\Product(5);
     $b1 = new \Shop\Basket\Basket(5);
-    $pf1 = new \Shop\BasketFake\Product(10);
 
     ?>
 </body>

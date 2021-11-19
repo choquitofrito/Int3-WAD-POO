@@ -19,10 +19,13 @@
         ->greyscale()
         ->save("./images/lynx_gris.jpg");
 
+    
 
 
 
     ?>
+    <br>
+    <img src="./images/lynx_gris.jpg" width="40%">
 </body>
 
 </html>

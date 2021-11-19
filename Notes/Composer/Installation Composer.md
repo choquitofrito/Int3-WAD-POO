@@ -86,12 +86,12 @@ Voici la procedure:
 1. Créez un dossier vide (ex: ManipImages) et un fichier accueil.php
 2. Créez un dossier **images** à l'intérieur, contenant une image téléchargé sur Internet (l'image à transformer)
 3. Créez une page de base et les balises php
-4. Téléchargez la librairie en utilisant la commande de console **composer require**
-
+4. Téléchargez le package Spatie en utilisant la commande de console **composer require**
+(allez préalablement dans le dossier contenant l'accueil dans la console)
 ```
 composer require spatie/image
 ```
-5. Observez que le code a été téléchargé dans vendor. **Faites include de l'autoload fourni par composer**
+1. Observez que le code a été téléchargé dans vendor. **Faites include de l'autoload fourni par composer**
 dans votre script (**include './vendor/autoload.php'**)
 6. Utilisez les méthodes de la classe pour créer une copie noir et blanc de l'image
 (choisissez un nom pour la nouvelle image)

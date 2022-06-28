@@ -335,10 +335,9 @@ Quand on essaie d'assigner une rue à l'adresse, la méthode
 correspondante doit vérifier qu'il n'y pas de chiffres dans la
 valeur à assigner.
 
-10.  Décrivez le jeu Tetris et créez une classe pour modeler les
-    tétrominos (les pièces)
+10.  Créez une classe qui représente un dé d'un jeu de rol. On choisit le nombre de faces du dé quand on le crée (il aura 6 faces par défaut)
 
-11.  Modelelisez **le personnage d'un jeu et ses actions** en
+11.  Modelisez **le personnage d'un jeu et ses actions** en
     utilisant une classe
 
 12.  Créez une classe Cercle qui contient le rayon du cercle et son
@@ -357,7 +356,7 @@ d)  Créez une méthode pour afficher toutes les données concernant le
     et le radio, utilisez les méthodes get au lieu d'accéder
     directement aux propriétés
 
-13.  Créez une classe CercleA où le centre du cercle est un array de
+1.   Créez une classe CercleA où le centre du cercle est un array de
     deux valeurs. Observez qu'on peut réutiliser pratiquement tout le
     code.
 

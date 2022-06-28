@@ -3,7 +3,7 @@
 <br>
 
 Nous disposons d'un array d'objets Personne (qui pourrait provenir d'une BD mais qu'on fixera ici pour de raisons pratiques).
-Chaque personne a un prenom, un nom et une date de naissance.
+Chaque personne a un prénom, un nom et une date de naissance.
 
 Pour chaque prénom, nous voulons savoir quelles sont ses nationalités les plus probables.
 
@@ -13,8 +13,8 @@ Actions à réaliser :
 
 **2**. Créez une page principale où vous créez un array de personnes
 
-**3**. Rajoutez le code necessaire dans la classe (méthode) pour pouvoir obtenir les nationalités possibles du prénom d'une Personne
-(Lisez et pratiquez la section **Outils de base** plus base)
+**3**. Rajoutez le code nécessaire dans la classe (méthode) pour pouvoir obtenir les nationalités possibles du prénom d'une Personne
+(Lisez et pratiquez la section **Outils de base** plus bas)
 
 **4**. Créez une boucle dans le code principal pour afficher les données de chaque Personne, y comprises les possibles nationalités de chaque personne
 
@@ -99,5 +99,5 @@ object(stdClass)[1]
 
 Faites un **var_dump** de $reponsePHP et **étudiez en détail** la structure. 
 
-Essayez d'afficher, par exemple, uniquement les nationalites (les *country_id*). Une fois vous gérez cette structure, créez une méthode dans Personne capable de faire l'appel à l'API et d'afficher que les nationalités.
+Essayez d'afficher, par exemple, uniquement les nationalités (les *country_id*). Une fois vous gérez cette structure, créez une méthode dans Personne capable de faire l'appel à l'API et d'afficher que les nationalités.
 

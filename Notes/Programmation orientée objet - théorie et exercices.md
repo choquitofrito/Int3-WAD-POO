@@ -547,33 +547,6 @@ d'ingrédients.
     classe.
 
 
-6.  Créez une classe Film selon la structure suivante:
-
-Une seule propriété $bdd contenant la connexion à la BD Films et
-les méthodes suivants:
-
-**obtenirFilmsBD** (): renvoie un array contenant toutes les données de
-tous les films de la table Films
-
-**obtenirFilmId**($id): renvoie un array contenant toutes les données
-d'un film choisi par id
-
-**obtenirFilmTitre** ($titre): renvoie un array contenant toutes les
-données des films qui ont un certain titre
-
-**obtenirFilmsAnnee** ($annee1, $annee2): renvoie un array contenant
-toutes les données des films produits entre deux dates
-
-**insererFilm** (....): insère un film. La méthode doit recevoir toutes
-les données du film à insérer
-
-**supprimerFilm** ($id): efface un film de la BD. La méthode doit
-recevoir l'id du film à effacer
-
-Rajoutez vous-mêmes les méthodes qui pourraient s'avérer utiles
-pour la création d'un site de critique de films
-
-
 <br>
 
 # 5. Héritage en PHP

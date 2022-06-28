@@ -229,7 +229,7 @@ class PersonneP {
 
 ```
 
-Notez que les noms des membres privés sont précédés d'un underscore.
+Note: certains developpeurs précedent les noms des membres privés d'un underscore, ce qu'on ne fera pas ici
 
 Pour pouvoir accéder aux propriétés depuis l'intérieur de la classe on doit trouver la manière de référencer l'objet courant : **le mot clé $this**. **On l'utilise quand un objet veut accéder à ses propres propriétés depuis une méthode de la propre classe** (à l'interieur de
 setNom et getNom, par exemple, ou dans une fonction qui affiche les
@@ -278,7 +278,26 @@ ou protected.
 
 1.  Créez une classe CompteBancaire qui contient les informations et les opérations basiques d'un compte bancaire. Il faut pouvoir obtenir le solde du compte, enlever et rajouter un montant d'argent. On peut aussi bloquer et débloquer le compte
 
-2.  Pour la classe PersonneP il nous manque les méthodes pour lire/modifier la propriété « prenom ». Créez-les et testez-les!
+2.  Pour la classe suivante PersonneP il nous manque les méthodes pour lire/modifier la propriété « prenom ». Créez-les et testez-les!
+
+```php
+<?php
+class PersonneP {
+    private string $prenom;
+    private string $nom;
+
+    public function getNom():string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom):void
+    {
+        $this->nom = $nom;
+    }
+}
+```
+
 
 3.  Rajoutez une méthode afficher() dans la classe Personne qui affiche le texte suivant:
 

@@ -309,7 +309,7 @@ class PersonneP {
     les produits en utilisant une classe. Les informations à stocker
     seront un code, le nom et le prix de chaque produit. Créez le code
     correspondant à cette classe Product (dans un autre fichier) et
-    testez-la. A part des fonctions de base (get et set), créez une
+    testez-la. En plus des fonctions de base (get et set), créez une
     autre pour afficher les infos d'un produit sur le site web.
 
 6.  Rajoutez une méthode à la classe précédente capable d'obtenir le

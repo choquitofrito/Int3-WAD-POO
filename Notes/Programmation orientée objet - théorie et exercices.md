@@ -919,6 +919,7 @@ unset ($a[0]);
 <br>
 
 # Annexe : Différence entre classe abstraite et interface (eng)
+(c'est juste une introduction, on verra d'autres exemples en cours)
 
 Just one more time, in the simplest terms possible:
 
@@ -964,11 +965,13 @@ of your classes, you don't need to implement interfaces.
 
 Pourquoi utiliser des classes abstraites au lieu d'une classe normale?
 -----------------------------------------------------------------------
+(documentation de php: l'auteur est Alexios Tsiaparas)
+
 
 Here's an example that helped me with understanding abstract classes.
 It's just a very simple way of explaining it (in my opinion). Lets say
 we have the following code:
-
+```php
 <?php
 class Fruit {
     private $color;
@@ -995,26 +998,31 @@ class Orange extends Fruit {
     }
 }
 ?>
-
+```
 Now I give you an apple and you eat it.
 
+```php
 <?php
 $apple = new Apple();
 $apple->eat();
 ?>
+```
 
 What does it taste like? It tastes like an apple. Now I give you a
 fruit.
 
+```php
 <?php
 $fruit = new Fruit();
 $fruit->eat();
 ?>
+```
 
 What does that taste like??? Well, it doesn't make much sense, so you
 shouldn't be able to do that. This is accomplished by making the Fruit
 class abstract as well as the eat method inside of it.
 
+```php
 <?php
 
 abstract class Fruit {
@@ -1027,10 +1035,10 @@ abstract class Fruit {
     }
 }
 ?>
+```
 
 Now just think about a Database class where MySQL and PostgreSQL extend
 it. Also, a note. An abstract class is just like an interface, but you
 can define methods in an abstract class whereas in an interface they are
 all abstract.
 
-(documentation de php: l'auteur est Alexios Tsiaparas)

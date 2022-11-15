@@ -6,7 +6,18 @@ class Repertoire
 {
     private string $nom;
     private string $description;
-    private array $contacts;
+
+    public array $contacts; // juste pour l'explication
+
+    // on doit implementer clone pour les objets (ou arrays d'objets)
+    // à l'intérieur de Repertoire si on veut pouvoir cloner 
+    // le Repertoire sans danger
+    public function __clone()
+    {
+        for ($i = 0; $i < count($this->contacts); $i++) {
+            $this->contacts[$i] = clone $this->contacts[$i];
+        }
+    }
 
     public function __construct(string $nom, string $description, array $contacts = [])
     {
@@ -79,11 +90,10 @@ class Repertoire
                     }
                     $i++;
                 }
-                
             }
         }
         if (!$arrayOk) {
-            throw new Exception ("Les contacts doivent être sous la forme d'un array d'objets Contact");
+            throw new Exception("Les contacts doivent être sous la forme d'un array d'objets Contact");
         } else {
             // tout ok
             $this->contacts = $contacts;
@@ -96,7 +106,7 @@ class Repertoire
     {
         // rajoute le contact au repertoire
         $this->contacts[] = $nouveauContact;
-        
+
         // fixer le repertoire pour le contact
         $nouveauContact->setRepertoire($this);
 

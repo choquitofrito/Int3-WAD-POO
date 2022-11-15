@@ -17,6 +17,12 @@
     
     var_dump($f);
 
+    // code test pour insérer un film
+    $cnx = new Connexion();
+    $filmManager = new FilmManager($cnx);
+    $filmManager->insert ($f);
+
+
 
     ?>
 </body>

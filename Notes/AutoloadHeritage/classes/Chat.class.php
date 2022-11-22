@@ -14,4 +14,5 @@ class Chat extends Animal
     public function miauler (){
         echo "<br>!MIAAAAAAAAAAAAAAAAAAAAAAAAAAAUU!";
     }
+    
 }

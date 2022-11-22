@@ -33,14 +33,19 @@ class FilmManager
         // var_dump ($stmt->errorInfo());
     }
 
-    // obtenir tous les films sous la forme d'un array d'objets
-    public function findAll(): array
-    {
-        // 1. obtenir tous les films de la BD 
-        // sous la forme d'un array normal
-        
-        
+    // select 
+    public function find (){
+
     }
+
+    // obtenir tous les films sous la forme d'un array d'objets
+    // public function findAll(): array
+    // {
+    //     // 1. obtenir tous les films de la BD 
+    //     // sous la forme d'un array normal
+        
+        
+    // }
 
 
     public function delete(Film $film)

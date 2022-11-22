@@ -33,8 +33,8 @@ class FilmManager
         // var_dump ($stmt->errorInfo());
     }
 
-    // select 
-    public function find (){
+    // select par titre
+    public function find (string $titre){
 
     }
 

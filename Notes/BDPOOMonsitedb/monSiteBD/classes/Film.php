@@ -1,8 +1,9 @@
 <?php
 
-class Film {
+class Film
+{
 
-    
+    private int $id;
     private string $titre;
     private int $duree;
     private string $description;
@@ -11,11 +12,12 @@ class Film {
 
 
 
-    public function hydrate(array $init){
-        foreach ($init as $propriete => $valeur){
+    public function hydrate(array $init)
+    {
+        foreach ($init as $propriete => $valeur) {
             $nomSet = "set" . ucfirst($propriete);
-            if (!method_exists($this,$nomSet)){
-                throw new Exception ("Method not found");
+            if (!method_exists($this, $nomSet)) {
+                throw new Exception("La méthode {$nomSet} n'existe pas");
             }
             $this->$nomSet($valeur);
         }
@@ -23,12 +25,32 @@ class Film {
 
     public function __construct(array $init)
     {
-        $this->hydrate ($init);
+        $this->hydrate($init);
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     /**
      * Get the value of titre
-     */ 
+     */
     public function getTitre()
     {
         return $this->titre;
@@ -38,7 +60,7 @@ class Film {
      * Set the value of titre
      *
      * @return  self
-     */ 
+     */
     public function setTitre($titre)
     {
         $this->titre = $titre;
@@ -48,7 +70,7 @@ class Film {
 
     /**
      * Get the value of duree
-     */ 
+     */
     public function getDuree()
     {
         return $this->duree;
@@ -58,7 +80,7 @@ class Film {
      * Set the value of duree
      *
      * @return  self
-     */ 
+     */
     public function setDuree($duree)
     {
         $this->duree = $duree;
@@ -68,7 +90,7 @@ class Film {
 
     /**
      * Get the value of description
-     */ 
+     */
     public function getDescription()
     {
         return $this->description;
@@ -78,7 +100,7 @@ class Film {
      * Set the value of description
      *
      * @return  self
-     */ 
+     */
     public function setDescription($description)
     {
         $this->description = $description;
@@ -88,7 +110,7 @@ class Film {
 
     /**
      * Get the value of image
-     */ 
+     */
     public function getImage()
     {
         return $this->image;
@@ -98,7 +120,7 @@ class Film {
      * Set the value of image
      *
      * @return  self
-     */ 
+     */
     public function setImage($image)
     {
         $this->image = $image;
@@ -108,7 +130,7 @@ class Film {
 
     /**
      * Get the value of dateSortie
-     */ 
+     */
     public function getDateSortie()
     {
         return $this->dateSortie;
@@ -118,10 +140,10 @@ class Film {
      * Set the value of dateSortie
      *
      * @return  self
-     */ 
-    public function setDateSortie($dateSortie)
+     */
+    public function setDateSortie(string $dateSortie)
     {
-        $this->dateSortie = $dateSortie;
+        $this->dateSortie = new DateTime ($dateSortie);
 
         return $this;
     }

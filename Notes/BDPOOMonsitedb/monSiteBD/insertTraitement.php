@@ -7,15 +7,11 @@ $cnx = Connexion::getPdo();
 
 // 2. Obtenir les données du formulaire
 $data = $_POST;
-$data['dateSortie'] = new DateTime($data['dateSortie']);
 $film1 = new Film($data);
 
 
 // 3. Insérer dans la BD en utilisant un Manager
 $filmManager = new FilmManager($cnx);
 $filmManager->insert($film1);
-
-
-die();
 
 header("location: ./index.php?p=listeFilms");

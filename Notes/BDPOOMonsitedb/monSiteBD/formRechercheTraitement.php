@@ -1,34 +1,26 @@
 <?php
 
+include "./vendor/autoload.php";
 
-include "./connexion/db.php";
+// filtre eventuellement pour éviter hack
+$objetConnexion = new Connexion();
+$cnx = Connexion::getPdo();
+$filmManager = new FilmManager ($cnx);
 
-try {
-    $cnx = new PDO(DBDRIVER . ':host=' . DBHOST . ';port=' . DBPORT . ';dbname=' . DBNAME . ';charset=' . DBCHARSET, DBUSER, DBPASS);
-} catch (Exception $e) {
-    // jamais en production car ça montre des infos
-    // sensibles
+$titre = $_POST ['titre'];
 
-    // echo $e->getMessage();
-    die();
-}
+$resultat = $filmManager->findByTitre($titre); // un array contenant des objets
 
-$titre = "%" . $_POST['titre'] . "%";
-$sql = "SELECT * FROM film WHERE titre LIKE :titre ";
-
-$stmt = $cnx->prepare($sql);
-$stmt->bindValue(":titre", $titre);
-$stmt->execute();
-
-$res = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-if (count($res) > 0) {
-    foreach ($res as $film) {
-        echo "<br>";
-        foreach ($film as $cle => $val) {
-            echo $cle . " : " . $val . "<br>";
-        }
+if (count($resultat) > 0) {
+    foreach ($resultat as $film) {
+        echo "<br>Titre: " . $film->getTitre();
+        echo "<br>Date de sortie: " . $film->getDateSortie()->format('y-m-d');
+        // etc...
     }
 } else {
     echo "<h5>On n'a pas trouve de films</h5>";
 }
+echo "<br><br>";
+
+var_dump ($filmManager->find (8));
+

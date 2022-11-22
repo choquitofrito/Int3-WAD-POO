@@ -33,18 +33,61 @@ class FilmManager
         // var_dump ($stmt->errorInfo());
     }
 
-    // select par titre
-    public function find (string $titre){
+    // select par titre, renvoie un tableau d'objets
+    public function findByTitre(string $titre, bool $titreExact = false): array
+    {
+        // si on veut chercher par un bout du titre
+        if (!$titreExact) {
+            $titre = "%" . $_POST['titre'] . "%";
+        }
 
+        
+        $sql = "SELECT * FROM film WHERE titre LIKE :titre ";
+
+        $stmt = $this->cnx->prepare($sql);
+        $stmt->bindValue(":titre", $titre);
+        $stmt->execute();
+
+        $tableauFilms = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        // créer un tableau d'objets Film
+        $tableauObjectsFilm = [];
+        foreach ($tableauFilms as $arrayFilm) {
+            $tableauObjectsFilm[] = new Film($arrayFilm);
+        }
+
+        return ($tableauObjectsFilm);
     }
+
+    // select par id, renvoie un objet ou null
+    public function find(int $id) 
+    {
+
+        $sql = "SELECT * FROM film WHERE id=:id";
+
+        $stmt = $this->cnx->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+
+        $res = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        if ($res) {
+            // on a trouve un film avec cet id
+            $res = new Film ($res);
+        }
+        
+        return ($res); // p-e un objet ou false
+    }
+
+
 
     // obtenir tous les films sous la forme d'un array d'objets
     // public function findAll(): array
     // {
     //     // 1. obtenir tous les films de la BD 
     //     // sous la forme d'un array normal
-        
-        
+
+
     // }
 
 

@@ -8,6 +8,6 @@ $cnx = Connexion::getPdo();
 $filmManager = new FilmManager ($cnx);
 
 $arrayFiltres = $_POST; // eventuellent nettoyer l'array (filter, éviter hacks
-var_dump ($arrayFiltres);
-$filmManager->findByCustom ($arrayFiltres);
+$arrayObjetsFilm = $filmManager->findByCustom ($arrayFiltres);
 
+var_dump ($arrayObjetsFilm);

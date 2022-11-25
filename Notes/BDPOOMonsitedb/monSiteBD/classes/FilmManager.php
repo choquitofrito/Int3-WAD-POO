@@ -73,21 +73,80 @@ class FilmManager
         $stmt->bindValue(":dateSortie", $film->getDateSortie()->format("y-m-d"));
         $stmt->bindValue(":id", $film->getId());
         $stmt->execute();
-
-
     }
 
 
     // findByCustom - chercher par filtre
-    public function findByCustom (array $filtres){
+    public function findByCustom(array $filtres)
+    {
 
-        // $sql = "SELECT FROM Film WHERE titre = :titre and asdfsdaf Ansdafaf"
-        // $sql = "SELECT FROM Film WHERE ";
+        // $sql = "SELECT * FROM Film WHERE titre = :titre and asdfsdaf Ansdafaf"
+        $sql = "SELECT * FROM Film";
+
+        // On efface toutes les valeurs vides de l'array de filtres
+        // https://www.php.net/manual/en/function.array-filter.php
+        // array_filter sert à filtrer un array en utilisant un callback 
+        // (ex: function qui renvoie si la valeur en cours est > 0).
+        // Si on ne specifie pas un callback, il
+        // efface toutes les valeurs vides d'un array
+        $filtres = array_filter($filtres);
+
+        $arrayStringsFilters = [];
+        // s'il y a au moins un critére de recherche ()
+        if (count($filtres) > 0) {
+            // array qui contiendra tous les parametres à rajouter dans la query
+            if (isset($filtres['titre'])) {
+                $arrayStringsFilters[] = 'LOWER(titre) LIKE :titre'; // le rendre insensible a la casse
+            }
+            if (isset($filtres['minDuree'])) {
+                $arrayStringsFilters[] = 'duree >= :minDuree';
+            }
+            if (isset($filtres['maxDuree'])) {
+                $arrayStringsFilters[] = 'duree <= :maxDuree';
+            }
+            if (isset($filtres['description'])) {
+                $arrayStringsFilters[] = 'description = :description';
+            }
+            if (isset($filtres['dateMin'])) {
+                $arrayStringsFilters[] = 'dateSortie >= :dateMin';
+            }
+            if (isset($filtres['dateMax'])) {
+                $arrayStringsFilters[] = 'dateSortie <= :dateMax';
+            }
+
+            // créer un string contenant tous les éléments de l'array séparés par " AND "
+            $strFiltres = implode(" AND ", $arrayStringsFilters);
+
+            $sql .= " WHERE " . $strFiltres;
+        }
+
+
+        $stmt = $this->cnx->prepare($sql);
+
+        // var_dump($sql);
         
-        // if (!empty ($filtres['titre'])) {
-        //     $sql .= "titre = :titre"
-        // }
+        // rajouter tous les bindParams
+        foreach ($filtres as $key => $val) {
+            echo ":" . $key;
+            if (is_numeric($val)){
+                $stmt->bindValue(":" . $key, (int)$val);
+            }
+            else {
+                if ($key == "titre"){
+                    $val = strtolower("%" . $val . "%"); // recherche souple et insensible à la casse
+                }
+                $stmt->bindValue(":" . $key, $val);
+            }
+        }
+        $stmt->execute();
+        $arrayFilms = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        // créer array d'objets
+        $arrayObjetsFilms = [];
+        foreach ($arrayFilms as $arrayFilm) {
+            $arrayObjetsFilms[] = new Film($arrayFilm);
+        }
+        return $arrayObjetsFilms;
     }
 
     // select par id, renvoie un objet ou null

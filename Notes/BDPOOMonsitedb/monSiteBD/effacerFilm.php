@@ -1,25 +1,17 @@
 <?php
 
-// 1. Créer une connexion à la BD
-include "./connexion/db.php";
+include_once "./vendor/autoload.php";
 
-try {
-        $cnx = new PDO(DBDRIVER . ':host=' . DBHOST . ';port=' . DBPORT . ';dbname=' . DBNAME . ';charset=' . DBCHARSET, DBUSER, DBPASS);
-} catch (Exception $e) {
-        // jamais en production car ça montre des infos
-        // sensibles
-        echo $e->getMessage();
-        
-        die();
-}
+// obtenir la connexion
+$objetConnexion = new Connexion();
+$cnx = Connexion::getPdo();
 
-$id = $_GET['id']; // param dans l'url
-$sql = "DELETE FROM film WHERE :id = id";
-$stmt = $cnx->prepare($sql);
-$stmt->bindValue(":id",$id,PDO::PARAM_INT);
-$stmt->execute();
-// var_dump ($stmt->errorInfo());
+// obtenir l'id du film à effacer
+$idFilm = $_GET['id'];
 
+// connecter à la BD et lancer le delete
+$filmManager = new FilmManager($cnx);
+$filmManager->delete($filmManager->find($idFilm));
 
-// une fois qu'on sait que la page fonctionne!
+// aller vers la liste
 header ('location: ./index.php?p=listeFilms');

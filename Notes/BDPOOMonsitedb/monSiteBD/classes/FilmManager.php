@@ -22,6 +22,8 @@ class FilmManager
         $stmt->bindValue(":duree", $film->getDuree(), PDO::PARAM_INT);
         $stmt->bindValue(":description", $film->getDescription());
         $stmt->bindValue(":dateSortie", $film->getDateSortie()->format("y-m-d"));
+
+        // CORRIGER pour l'upload
         // obtenir un nom pour l'image`
         $nomFichier = $this->uploadImage();
 
@@ -41,7 +43,7 @@ class FilmManager
             $titre = "%" . $_POST['titre'] . "%";
         }
 
-        
+
         $sql = "SELECT * FROM film WHERE titre LIKE :titre ";
 
         $stmt = $this->cnx->prepare($sql);
@@ -58,8 +60,29 @@ class FilmManager
         return ($tableauObjectsFilm);
     }
 
+    // update
+    public function update(Film $film)
+    {
+
+        $sql = "UPDATE film SET titre=:titre, duree=:duree, description=:description, dateSortie=:dateSortie WHERE id =:id";
+
+        $stmt = $this->cnx->prepare($sql);
+        $stmt->bindValue(":titre", $film->getTitre());
+        $stmt->bindValue(":duree", $film->getDuree());
+        $stmt->bindValue(":description", $film->getDescription());
+        $stmt->bindValue(":dateSortie", $film->getDateSortie()->format("y-m-d"));
+        $stmt->bindValue(":id", $film->getId());
+        $stmt->execute();
+
+        
+    }
+
+
+    // findBy - chercher par filtre
+
+
     // select par id, renvoie un objet ou null
-    public function find(int $id) 
+    public function find(int $id)
     {
 
         $sql = "SELECT * FROM film WHERE id=:id";
@@ -73,9 +96,9 @@ class FilmManager
 
         if ($res) {
             // on a trouve un film avec cet id
-            $res = new Film ($res);
+            $res = new Film($res);
         }
-        
+
         return ($res); // p-e un objet ou false
     }
 
@@ -94,10 +117,16 @@ class FilmManager
     public function delete(Film $film)
     {
         // effacer de la BD
-
+        $sql = "DELETE FROM film WHERE :id = id";
+        $stmt = $this->cnx->prepare($sql);
+        $stmt->bindValue(":id", $film->getId(), PDO::PARAM_INT);
+        $stmt->execute();
 
         // (effacer le fichier d'image dans le disque)
-
+        // obtenir le nom du fichier d'image
+        $fichierImg = $film->getImage();
+        // effacer le fichier du disque
+        unlink('./img/' . $fichierImg);
     }
 
 

@@ -10,6 +10,9 @@ class Film
     private string $image;
     private DateTime $dateSortie;
 
+    // relation
+    private array $notes;
+
 
 
     public function hydrate(array $init)
@@ -30,6 +33,8 @@ class Film
     public function __construct(array $init)
     {
         $this->hydrate($init);
+        // initialiser les dependances à vide
+        $this->notes = [];
     }
 
     /**
@@ -149,6 +154,33 @@ class Film
     {
         $this->dateSortie = new DateTime ($dateSortie);
 
+        return $this;
+    }
+
+    /**
+     * Get the value of notes
+     */ 
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Set the value of notes
+     *
+     * @return  self
+     */ 
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    public function addNote (Note $note){
+        $this->notes[] = $note;
+        // créer le lien dans l'autre sens
+        $note->setFilm($this);
         return $this;
     }
 }

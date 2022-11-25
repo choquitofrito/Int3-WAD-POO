@@ -10,6 +10,9 @@ class Utilisateur
     private string $password;
     private string $role;
 
+    // relation
+    private array $notes;
+
 
     public function hydrate(array $init)
     {
@@ -18,8 +21,7 @@ class Utilisateur
             if (!method_exists($this, $nomSet)) {
                 // à nous de voir selon le niveau de restriction...
                 // throw new Exception("La méthode {$nomSet} n'existe pas");
-            }
-            else {
+            } else {
                 // appel au set
                 $this->$nomSet($valeur);
             }
@@ -29,11 +31,13 @@ class Utilisateur
     public function __construct(array $init)
     {
         $this->hydrate($init);
+        // initialiser les dependances à vide
+        $this->notes = [];
     }
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -43,7 +47,7 @@ class Utilisateur
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -53,7 +57,7 @@ class Utilisateur
 
     /**
      * Get the value of nom
-     */ 
+     */
     public function getNom()
     {
         return $this->nom;
@@ -63,7 +67,7 @@ class Utilisateur
      * Set the value of nom
      *
      * @return  self
-     */ 
+     */
     public function setNom($nom)
     {
         $this->nom = $nom;
@@ -73,7 +77,7 @@ class Utilisateur
 
     /**
      * Get the value of login
-     */ 
+     */
     public function getLogin()
     {
         return $this->login;
@@ -83,7 +87,7 @@ class Utilisateur
      * Set the value of login
      *
      * @return  self
-     */ 
+     */
     public function setLogin($login)
     {
         $this->login = $login;
@@ -93,7 +97,7 @@ class Utilisateur
 
     /**
      * Get the value of password
-     */ 
+     */
     public function getPassword()
     {
         return $this->password;
@@ -103,7 +107,7 @@ class Utilisateur
      * Set the value of password
      *
      * @return  self
-     */ 
+     */
     public function setPassword($password)
     {
         $this->password = $password;
@@ -113,7 +117,7 @@ class Utilisateur
 
     /**
      * Get the value of role
-     */ 
+     */
     public function getRole()
     {
         return $this->role;
@@ -123,11 +127,39 @@ class Utilisateur
      * Set the value of role
      *
      * @return  self
-     */ 
+     */
     public function setRole($role)
     {
         $this->role = $role;
 
+        return $this;
+    }
+
+    /**
+     * Get the value of notes
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * Set the value of notes
+     *
+     * @return  self
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    public function addNote(Note $note)
+    {
+        $this->notes[] = $note;
+        // créer le lien dans l'autre sens
+        $note->setUtilisateur($this);
         return $this;
     }
 }

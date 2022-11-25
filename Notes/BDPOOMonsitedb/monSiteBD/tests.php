@@ -8,7 +8,23 @@
 </head>
 <body>
     <?php
+    include_once "./vendor/autoload.php";
+
+    $f1 = new Film (['titre'=>'Lalalala']);
+    $u1 = new Utilisateur (['login'=>'Marie', 'password'=>'Marie']);
+
+    // 
+    $n1 = new Note (['cotation' => 5]);
+    $u1->addNote ($n1);
+    $f1->addNote ($n1);
+    // var_dump ($u1);
+    // var_dump ($f1);
+    var_dump ($n1);
+
+
     
+
+
     ?>
 </body>
 </html>

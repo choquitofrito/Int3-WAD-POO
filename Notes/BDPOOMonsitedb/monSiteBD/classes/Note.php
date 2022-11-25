@@ -6,6 +6,11 @@ class Note
     private int $id;
     private int $cotation;
 
+    // relations
+    private Utilisateur $utilisateur;
+    private Film $film;
+
+
     public function hydrate(array $init)
     {
         foreach ($init as $propriete => $valeur) {
@@ -62,6 +67,46 @@ class Note
     public function setCotation($cotation)
     {
         $this->cotation = $cotation;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of utilisateur
+     */ 
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * Set the value of utilisateur
+     *
+     * @return  self
+     */ 
+    public function setUtilisateur($utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of film
+     */ 
+    public function getFilm()
+    {
+        return $this->film;
+    }
+
+    /**
+     * Set the value of film
+     *
+     * @return  self
+     */ 
+    public function setFilm($film)
+    {
+        $this->film = $film;
 
         return $this;
     }

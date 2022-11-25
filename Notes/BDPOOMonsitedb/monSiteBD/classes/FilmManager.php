@@ -74,12 +74,21 @@ class FilmManager
         $stmt->bindValue(":id", $film->getId());
         $stmt->execute();
 
-        
+
     }
 
 
-    // findBy - chercher par filtre
+    // findByCustom - chercher par filtre
+    public function findByCustom (array $filtres){
 
+        // $sql = "SELECT FROM Film WHERE titre = :titre and asdfsdaf Ansdafaf"
+        // $sql = "SELECT FROM Film WHERE ";
+        
+        // if (!empty ($filtres['titre'])) {
+        //     $sql .= "titre = :titre"
+        // }
+
+    }
 
     // select par id, renvoie un objet ou null
     public function find(int $id)

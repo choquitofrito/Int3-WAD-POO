@@ -34,7 +34,6 @@
     $utilisateurManager = new UtilisateurManager($cnx);
 
     // insertion de tous les éléments
-
     $filmManager->insert($f1);
     
     var_dump ($f1);

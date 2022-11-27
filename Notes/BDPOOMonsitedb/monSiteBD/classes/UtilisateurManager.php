@@ -1,7 +1,7 @@
 <?php
 
 // gére le CRUD pour les films
-class Utilisateur
+class UtilisateurManager
 {
 
     private PDO $cnx;
@@ -11,32 +11,27 @@ class Utilisateur
         $this->cnx = $cnx;
     }
 
-    public function insert(Film $film)
+    public function insert(Utilisateur $utilisateur)
     {
-        // $sql = "INSERT INTO film (id, titre, duree, description, dateSortie, image) ";
-        // $sql .= " VALUES (NULL , :titre, :duree, :description, :dateSortie, :image)";
+        // Lancer l'insertion de l'utilisateur dans le tableau "user"
+        $sql = "INSERT INTO utilisateur (id, nom, login, password) VALUES " .
+            "(null , :nom , :login , :password) ";
+        $stmt = $this->cnx->prepare($sql);
+        $stmt->bindValue(":nom", $utilisateur->getNom());
+        $stmt->bindValue(":login", $utilisateur->getLogin());
 
-        // $stmt = $this->cnx->prepare($sql);
+        $password = password_hash($utilisateur->getPassword(), PASSWORD_DEFAULT, ['cost' => 12]);
 
-        // $stmt->bindValue(":titre", $film->getTitre());
-        // $stmt->bindValue(":duree", $film->getDuree(), PDO::PARAM_INT);
-        // $stmt->bindValue(":description", $film->getDescription());
-        // $stmt->bindValue(":dateSortie", $film->getDateSortie()->format("y-m-d"));
+        $stmt->bindValue(":password", $password);
 
-        // // CORRIGER pour l'upload
-        // // obtenir un nom pour l'image`
-        // $nomFichier = $this->uploadImage();
+        $stmt->execute();
 
-        // $stmt->bindValue(":image", $nomFichier);
-
-        // $stmt->execute();
-
-        // pour debug
-        // var_dump ($stmt->errorInfo());
+        // nous devons donner un id à l'entité qui vient d'être insérée:
+        $utilisateur->hydrate (['id' => $this->cnx->lastInsertId()]);
     }
 
     // select par titre, renvoie un tableau d'objets
-    public function findByLogin(string $login, bool $titreExact = false): array
+    public function findByLogin(string $login): array
     {
         // si on veut chercher par un bout du titre
         // if (!$titreExact) {
@@ -59,5 +54,4 @@ class Utilisateur
 
         // return ($tableauObjectsFilm);
     }
-
 }

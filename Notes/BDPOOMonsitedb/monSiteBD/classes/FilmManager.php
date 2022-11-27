@@ -25,14 +25,17 @@ class FilmManager
 
         // CORRIGER pour l'upload
         // obtenir un nom pour l'image`
-        $nomFichier = $this->uploadImage();
+        // $nomFichier = $this->uploadImage();
+        $stmt->bindValue(":image", "");
 
-        $stmt->bindValue(":image", $nomFichier);
+        // $stmt->bindValue(":image", $nomFichier);
 
         $stmt->execute();
 
         // pour debug
         // var_dump ($stmt->errorInfo());
+        // nous devons donner un id à l'entité qui vient d'être insérée:
+        $film->hydrate(['id' => $this->cnx->lastInsertId()]);
     }
 
     // select par titre, renvoie un tableau d'objets
@@ -124,15 +127,14 @@ class FilmManager
         $stmt = $this->cnx->prepare($sql);
 
         // var_dump($sql);
-        
+
         // rajouter tous les bindParams
         foreach ($filtres as $key => $val) {
             echo ":" . $key;
-            if (is_numeric($val)){
+            if (is_numeric($val)) {
                 $stmt->bindValue(":" . $key, (int)$val);
-            }
-            else {
-                if ($key == "titre"){
+            } else {
+                if ($key == "titre") {
                     $val = strtolower("%" . $val . "%"); // recherche souple et insensible à la casse
                 }
                 $stmt->bindValue(":" . $key, $val);

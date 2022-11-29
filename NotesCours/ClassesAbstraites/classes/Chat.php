@@ -1,6 +1,6 @@
 <?php
 
-class Chien {
+class Chat {
     private string $nom;
     private int $poids;
     
@@ -10,11 +10,11 @@ class Chien {
     }
 
 
-    public function aboyer():void {
-        echo "<br>wouafff wouaff!!!!";
+    public function miauler():void {
+        echo "<br>Miauuuuuu!!!!";
     }
     public function manger():void {
-        echo "<br>Miam je mange des os!";
+        echo "<br>Miam je mange des poissons!";
     }
     public function seDeplacer():void{
         echo "<br>Je cours dans tous les sens!";

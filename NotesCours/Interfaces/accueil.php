@@ -9,6 +9,17 @@
 <body>
 <?php
 include "./vendor/autoload.php";
+
+$voiture1 = new Voiture("Renault", "3242342343");
+$troti1 = new Trotinette("AXIS","94324234234");
+$troti1->rouler();
+$voiture1->rouler();
+var_dump ($voiture1);
+var_dump ($troti1);
+
+
+
+
 ?>
 
 </body>

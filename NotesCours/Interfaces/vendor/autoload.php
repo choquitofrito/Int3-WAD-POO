@@ -1,7 +1,7 @@
 <?php
 spl_autoload_register(
     function ($nomClasse) {
-        $nomFichier = "./classes/{$nomClasse}.class.php"; 
+        $nomFichier = "./classes/{$nomClasse}.php"; 
         if (file_exists($nomFichier)){
             include_once $nomFichier;
         }

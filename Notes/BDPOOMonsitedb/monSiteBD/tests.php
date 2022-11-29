@@ -18,40 +18,72 @@
 
 
     $f1 = new Film([
-        'titre' => 'Lalalala',
+        'titre' => 'Matilda',
         'duree' => 40,
         'description' => 'blabla',
         'image' => 'lala.jpg',
         'dateSortie' => '2000-10-10'
     ]);
-    $filmManager = new FilmManager($cnx);
+
     
     $u1 = new Utilisateur([
-        'login' => 'marie@gmail.com',
+        'login' => 'matilda@gmail.com',
         'nom' => 'Marie',
         'password' => 'Marie'
     ]);
-    $utilisateurManager = new UtilisateurManager($cnx);
 
-    // insertion de tous les éléments
-    $filmManager->insert($f1);
+    $n1 = new Note(['cotation' => 15]);
     
-    var_dump ($f1);
-    
-    $utilisateurManager->insert($u1);
-    
-    $n1 = new Note(['cotation' => 5]);
-
-    // créer les liens (bidirectionnels)
     $u1->addNote($n1);
     $f1->addNote($n1);
 
-    $noteManager = new NoteManager($cnx);
+    // BD Maintenant!!
 
+    // insertion de tous les éléments
+    $filmManager = new FilmManager($cnx);
+    $filmManager->insert($f1);
+  
+    // var_dump ($f1);
+    // var_dump ($u1);
+    // var_dump ($n1);
+
+    $utilisateurManager = new UtilisateurManager($cnx);
+    $utilisateurManager->insert($u1);
+    
+    // créer les liens (bidirectionnels)
+
+    $noteManager = new NoteManager($cnx);
     $noteManager->insert($n1);
     die();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    $f2 = $filmManager->find(14);
+    var_dump ($f2->getNotes());
 
 
 

@@ -14,7 +14,7 @@ class Product {
 	
 }
 // j'ai deux classes: 
-// - la classe importé qui s'appelait Product et maintenant s'appele Produit
+// - la classe importée qui s'appelait Product et maintenant s'appele Produit
 // - une nouvelle classe Product que j'ai créé dans ce fichier
 $product= new Product("Oranges", 1.5); 
 $product= new Produit("Poires", 1.5); 

@@ -13,6 +13,7 @@ class FilmManager
 
     public function insert(Film $film)
     {
+        
         $sql = "INSERT INTO film (id, titre, duree, description, dateSortie, image) ";
         $sql .= " VALUES (NULL , :titre, :duree, :description, :dateSortie, :image)";
 
@@ -35,7 +36,10 @@ class FilmManager
         // pour debug
         // var_dump ($stmt->errorInfo());
         // nous devons donner un id à l'entité qui vient d'être insérée:
-        $film->hydrate(['id' => $this->cnx->lastInsertId()]);
+        $id = $this->cnx->lastInsertId();
+        $film->hydrate(['id' =>$id]);
+
+
     }
 
     // select par titre, renvoie un tableau d'objets

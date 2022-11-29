@@ -2,7 +2,7 @@
 
 <br>
 
-Composer est un gestionnaire de dépendances, c'est à dire un logiciel qui nous aide a importer et organiser les classes externes dont notre projet dépend.
+Composer est un gestionnaire de dépendances, c'est à dire un logiciel qui nous aide a importer et organiser les classes **externes** dont notre projet dépend.
 
 **Exemple:** Si on veut includre un Captcha avec **PHP Captcha** dans notre projet, Composer nous aidera à télécharger le package (dans une version choisie qui pourra changer) et à l'inclure dans notre projet (grace à la création d'un fichier autoload)
 

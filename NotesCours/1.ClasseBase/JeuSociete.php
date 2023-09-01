@@ -6,6 +6,7 @@ class JeuSociete
     public string $nom;
     public int $minJoueurs;
     public int $maxJoueurs;
+
     // méthode constructeur
     public function __construct(
         string $valNom,
@@ -17,7 +18,7 @@ class JeuSociete
         $this->maxJoueurs = $valMaxJoueurs;
     }
     // fonctionnalité
-    public function afficher()
+    public function afficher():void
     {
         print("<br>Nom du jeu: " . $this->nom);
         print("<br>Nombre de joueurs: " . $this->minJoueurs . "-" . $this->maxJoueurs);

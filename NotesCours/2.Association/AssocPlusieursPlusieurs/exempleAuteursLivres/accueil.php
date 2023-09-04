@@ -11,6 +11,7 @@
     require_once "./Livre.php";
 
     $auteur1 = new Auteur("Woolf", "Virginia");
+    
     $auteur2 = new Auteur("Austen", "Jane");
     
     $livre1 = new Livre ("23432492349234", "Mrs. Dalloway");
@@ -18,13 +19,9 @@
 
     $livre3 = new Livre ("00234023402349", "Orgueil et préjugés");
 
-    $auteur1->addLivre($livre1);
-    $auteur1->addLivre($livre2);
-
-    var_dump ($auteur1);
-
-
-
+    // $auteur1->addLivre($livre1);
+    $livre1->addAuteur($auteur1);
+    var_dump ($livre1);
 
     ?>
 </body>

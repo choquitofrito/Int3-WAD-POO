@@ -6,7 +6,7 @@ class Livre
     private string $titre;
 
     // association 
-    private array $auteurs;
+    public array $auteurs;
 
     public function __construct(string $isbn, string $titre)
     {
@@ -91,5 +91,6 @@ class Livre
     // rajouter les éléments de la collection
     public function addAuteur (Auteur $auteur){
         $this->auteurs[] = $auteur;
+        $auteur->livres[]=$this;
     }
 }

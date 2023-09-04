@@ -18,7 +18,10 @@
 
     $livre3 = new Livre ("00234023402349", "Orgueil et préjugés");
 
-    
+    $auteur1->addLivre($livre1);
+    $auteur1->addLivre($livre2);
+
+    var_dump ($auteur1);
 
 
 

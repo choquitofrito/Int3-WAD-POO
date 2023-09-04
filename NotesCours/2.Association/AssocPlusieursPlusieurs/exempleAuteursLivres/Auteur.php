@@ -89,6 +89,7 @@ class Auteur
 
     // rajouter les éléments de la collection
     public function addLivre (Livre $livre){
-        
+        $this->livres[] = $livre;    
+        // lien dans l'autre sens. 
     }
 }

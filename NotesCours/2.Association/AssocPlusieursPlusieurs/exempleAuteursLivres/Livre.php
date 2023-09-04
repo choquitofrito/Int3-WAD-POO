@@ -88,5 +88,8 @@ class Livre
         return $this;
     }
 
-    
+    // rajouter les éléments de la collection
+    public function addAuteur (Auteur $auteur){
+        $this->auteurs[] = $auteur;
+    }
 }

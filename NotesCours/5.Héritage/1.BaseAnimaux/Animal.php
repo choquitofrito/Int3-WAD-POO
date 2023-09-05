@@ -8,6 +8,6 @@ class Animal {
     }
 
     public function manger (){
-        print ("<br>" . $this->nom . "mange!");
+        print ("<br>" . $this->nom . " mange!");
     }
 }

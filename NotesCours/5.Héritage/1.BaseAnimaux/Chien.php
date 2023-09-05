@@ -3,9 +3,9 @@
 
 class Chien extends Animal {
 
-    public bool $garde;
+    protected bool $garde;
 
-    public function __construct (string $nom , bool $garde){
+    public function __construct (string $nom , bool $garde = false){
         parent::__construct ($nom);
         $this->garde = $garde;
     }
@@ -16,5 +16,25 @@ class Chien extends Animal {
 
     public function aboyer (){
         print ("<br>Guau guau!!!!!!!");
+    }
+
+    /**
+     * Get the value of garde
+     */ 
+    public function getGarde()
+    {
+        return $this->garde;
+    }
+
+    /**
+     * Set the value of garde
+     *
+     * @return  self
+     */ 
+    public function setGarde($garde)
+    {
+        $this->garde = $garde;
+
+        return $this;
     }
 }

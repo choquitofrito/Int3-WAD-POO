@@ -1,15 +1,15 @@
 <?php
 
-class Animal {
+abstract class Animal {
     protected string $nom;
     
     public function __construct (string $nom){
         $this->nom = $nom;        
     }
 
-    public function manger (){
-        print ("<br>" . $this->nom . " mange!");
-    }
+    // cette méthode DOIT être définie dans toutes
+    // les classes qui héritent. Ici il y aura que la signature.
+    public abstract function manger ();
 
     public function getNom():string{
         return $this->nom;

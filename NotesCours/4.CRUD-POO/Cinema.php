@@ -1,65 +1,62 @@
 <?php
-
-class Film
-{
+class Cinema {
     private int $id;
-    private string $titre;
-    private int $duree;
+    private string $nom;
+    private string $contact;
 
     // association
     private array $seances;
+    
 
-    public function __construct(string $titre, int $duree)
-    {
-        $this->titre = $titre;
-        $this->duree = $duree;
+    public function __construct(string $nom, string $contact){
+        $this->nom = $nom;
+        $this->contact = $contact;
     }
 
-
     /**
-     * Get the value of titre
+     * Get the value of nom
      *
      * @return string
      */
-    public function getTitre(): string
+    public function getNom(): string
     {
-        return $this->titre;
+        return $this->nom;
     }
 
     /**
-     * Set the value of titre
+     * Set the value of nom
      *
-     * @param string $titre
+     * @param string $nom
      *
      * @return self
      */
-    public function setTitre(string $titre): self
+    public function setNom(string $nom): self
     {
-        $this->titre = $titre;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get the value of duree
+     * Get the value of contact
      *
-     * @return int
+     * @return string
      */
-    public function getDuree(): int
+    public function getContact(): string
     {
-        return $this->duree;
+        return $this->contact;
     }
 
     /**
-     * Set the value of duree
+     * Set the value of contact
      *
-     * @param int $duree
+     * @param string $contact
      *
      * @return self
      */
-    public function setDuree(int $duree): self
+    public function setContact(string $contact): self
     {
-        $this->duree = $duree;
+        $this->contact = $contact;
 
         return $this;
     }
@@ -87,13 +84,11 @@ class Film
 
         return $this;
     }
-
     // rajouter les éléments de la collection
-    public function addSeance(Seance $seance)
-    {
+    public function addSeance (Seance $seance){
         $this->seances[] = $seance;
-        // liens seance->film
-        $seance->setFilm($this);
+        // liens seance->cinema
+        $seance->setCinema($this);        
     }
 
     /**

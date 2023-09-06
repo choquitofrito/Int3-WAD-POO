@@ -843,7 +843,12 @@ Une **classe abstraite** est une classe qui possède au moins une méthode qui n
 On **ne peut pas créer d'objets d'une classe abstraite**, mais **on peut créer des objets des classes qui héritent d'elle**
 
 Une interface spécifie un ensemble de méthodes qui doivent être
-implémentées par de classes. Une **interface crée un contrat** entre les classes mais pas l'état des objets. Similaire dans son structure à une classe abstraite mais elle n'implémente rien
+implémentées par de classes qui héritent d'elle. Une **interface crée un contrat** entre les classes mais n'as pas de propriétés (on ne garde pas l'état des objets). Similaire dans son structure à une classe abstraite mais elle n'implémente rien. Les méthodes sont tous vides.
+
+En résumé: une Interface est comme une classe abstraite MAIS:
+
+- toutes les méthodes sont vides et doivent être implementées dans les class filles
+- les interfaces n'ont pas de propriétés variables. Elles peuvent avoir uniquement des constantes.
 
 **Exemple d'utilisation des interfaces** au sein d'un groupe de
 développeurs on doit créer chacun une classe, mais toutes ces classes

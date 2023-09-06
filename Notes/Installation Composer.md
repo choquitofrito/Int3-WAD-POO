@@ -75,8 +75,8 @@ Nous allons voir ces concepts avec un exemple pratique.
 
 <br>
 
-Nous allons utiliser une libraire de manipulation d'images (**Spatie** - https://spatie.be/docs/image/v1/introduction).
-Cette librairie nous permet de modifier un tas de caracteristiques des images (sepia, blanc et noir, dimensions, crop etc...)
+Nous allons utiliser un package de manipulation d'images (**Spatie** - https://spatie.be/docs/image/v1/introduction).
+Ce package nous permet de modifier un tas de caracteristiques des images (sepia, blanc et noir, dimensions, crop etc...)
 
 Nous allons developper un exemple où nous prendrons une image et créerons une copie en noir et blanc.
 Nous **allons importer le package avec composer**. Pour cet exemple nous utiliserons la méthode de la console **composer require**.
@@ -93,7 +93,7 @@ composer require spatie/image
 ```
 1. Observez que le code a été téléchargé dans vendor. **Faites include de l'autoload fourni par composer**
 dans votre script (**include './vendor/autoload.php'**)
-6. Utilisez les méthodes de la classe pour créer une copie noir et blanc de l'image
+1. Utilisez les méthodes de la classe pour créer une copie noir et blanc de l'image
 (choisissez un nom pour la nouvelle image)
 
 ```php
@@ -146,7 +146,7 @@ Nous allons  télécharger un package qui permet de générer de fichiers de **l
 Le fichier composer.json sera modifié et les dépendances (ici seulement
 un package) seront téléchargées
 
-Le premier **monolog** est le fournisseur de la libraire à télécharger
+Le premier **monolog** est le fournisseur d'un package à télécharger
 et le deuxième est le package en soi.
 
 **1.0.\*** : indique la version à télécharger. Cela signifie toute

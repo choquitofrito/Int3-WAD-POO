@@ -75,6 +75,20 @@ Nous allons voir ces concepts avec un exemple pratique.
 
 <br>
 
+**Attention**: 
+
+
+
+Changez le fichier **php.ini** (dans /xampp/php/php.ini ou accésible depuis le menu de XAMPP dans *apache->config*).
+
+Chechez "gd" dans le fichier. Activez l'extension GD - manipulation des images - en enlevant le ";". Re-démarrez Apache. 
+
+```
+extension=gd 
+```
+
+<br>
+
 Nous allons utiliser un package de manipulation d'images (**Spatie** - https://spatie.be/docs/image/v1/introduction).
 Ce package nous permet de modifier un tas de caracteristiques des images (sepia, blanc et noir, dimensions, crop etc...)
 

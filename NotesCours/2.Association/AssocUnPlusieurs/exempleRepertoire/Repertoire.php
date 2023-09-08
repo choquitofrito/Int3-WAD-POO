@@ -1,7 +1,7 @@
 <?php
 // include_once "./Contact.php";
 
-class Repertoire {
+class Repertoire implements ArrayAccess {
 
     private string $nom;
     private string $description;

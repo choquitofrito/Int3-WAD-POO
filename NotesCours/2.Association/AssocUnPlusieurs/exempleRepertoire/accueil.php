@@ -21,6 +21,9 @@
     $r1->addContact($c1);
     $r1->addContact($c2);
     $r1->addContact($c3);
+
+    $r1[7] = $c1;
+
     var_dump ($r1);
 
     var_dump ($c1->getRepertoire());

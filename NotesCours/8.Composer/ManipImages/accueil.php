@@ -13,10 +13,15 @@
         require_once "./vendor/autoload.php";
 
         use Spatie\Image\Image;
-        
+
         Image::load ("./images/chien.jpg")
             ->greyscale ()
             ->save ("./images/chienGray.jpg");
+
+        $image = new Image ("./images/chien.jpg");
+        $image->greyscale();
+        $image->save ("./images/test.jpg");
+
 
 
     ?>

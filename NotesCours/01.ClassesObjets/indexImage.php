@@ -15,8 +15,10 @@
 
     $liens = ['chat1.jpg','chien.jpg','poisson.jpg'];
     foreach ($liens as $lien){
-        $objImage = new Image ($lien);
-        $objImage->afficher();
+        // $objImage = new Image ($lien);
+        // $objImage->afficher();
+
+        (new Image($lien))->afficher();
     }
 
 ?>

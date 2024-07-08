@@ -13,6 +13,9 @@
 
     $e1 = new Eleve ("Jenny", 2024, new DateTime("1/1/2000"));
 
+    print ("<h2> " . $e1->getId()  . "</h2>");
+
+
     $e1->setPrenom("Chariffa");
     $e1->setAnneeInscription(2090);
     $e1->setDateNaissance(new DateTime());

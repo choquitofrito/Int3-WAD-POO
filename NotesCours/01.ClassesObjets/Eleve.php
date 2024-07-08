@@ -6,7 +6,7 @@ class Eleve
 {
 
     // propriétés
-    private $id;
+    private int $id;
     private string $prenom;
     private int $anneeInscription;
     private DateTime $dateNaissance; // un objet de la classe DateTime
@@ -23,7 +23,19 @@ class Eleve
         $this->anneeInscription = $anneeInscription;
         $this->dateNaissance = $dateNaissance;
         $this->avatar = $avatar;
+
+        // générer id
+        $this->id = rand(1,1000000);
     }
+
+    public function getId():int{
+        return $this->id;
+    }
+
+    // usage interne de la classe
+    private function setId(int $id){
+        $this->id = $id;
+    } 
 
     public function setPrenom(string $prenom): self
     {

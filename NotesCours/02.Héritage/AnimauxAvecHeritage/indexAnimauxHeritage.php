@@ -9,6 +9,7 @@
     <?php
         // include_once "./Animal.php";
         include_once "./Chat.php";
+        include_once "./Chien.php";
 
         // $a1 = new Animal ("Lolo", "cocker");
         // $a1->afficher();
@@ -16,6 +17,10 @@
         $c1 = new Chat ("Felix", "sphinx");
         $c1->tomberDebout();
         var_dump ($c1);
+
+        $chien = new Chien ("Felix", "sphinx");
+        $chien->guider();
+        var_dump ($chien);
 
 
     ?>

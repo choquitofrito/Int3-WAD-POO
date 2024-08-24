@@ -7,11 +7,6 @@ class Connexion
 {
     private static PDO $pdo;
 
-    public function __construct()
-    {
-
-    }
-
     /**
      * Get the value of pdo
      */

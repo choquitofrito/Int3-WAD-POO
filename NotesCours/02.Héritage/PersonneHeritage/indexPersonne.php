@@ -35,6 +35,7 @@
     );
 
     var_dump($patient1);
+    
     $patient1->afficher();
     $medecin1->afficher();
 

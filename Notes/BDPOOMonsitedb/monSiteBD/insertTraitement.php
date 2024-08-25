@@ -7,7 +7,7 @@ $cnx = Connexion::getPdo();
 
 // 2. Obtenir les données du formulaire
 $data = $_POST;
-
+$film1 = new Film($data);
 
 // il faut traiter l'upload et stocker le nom du fichier dans l'objet
 
@@ -20,8 +20,7 @@ $nomFichier = uniqid() . date("h-i-s") .
 $cheminComplet = $dossier . "/" . $nomFichier;
 
 // stocker le nom dans l'objet
-// var_dump ($_POST);
-$film1 = new Film($_POST['titre'], $_POST['duree'], $_POST['description'], new DateTime($_POST['dateSortie']),$nomFichier);
+$film1->setImage($nomFichier);
 
 // 2. Deplacer le fichier temporaire et lui donner
 // le nom choisi

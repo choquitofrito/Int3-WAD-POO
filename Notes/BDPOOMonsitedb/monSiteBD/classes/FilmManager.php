@@ -145,11 +145,7 @@ class FilmManager
         // créer array d'objets
         $arrayObjetsFilms = [];
         foreach ($arrayFilms as $arrayFilm) {
-            $arrayObjetsFilms[] = new Film($arrayFilm['titre'], 
-                                        $arrayFilm['duree'], 
-                                        $arrayFilm['description'], 
-                                        new DateTime($arrayFilm['dateSortie']),
-                                        $arrayFilm['image']);
+            $arrayObjetsFilms[] = new Film($arrayFilm);
         }
         return $arrayObjetsFilms;
     }

@@ -5,7 +5,7 @@ include "./connexion/db.php";
 // dans notre cas c'est utile si on utilise plusieurs connexions dans le même script
 class Connexion
 {
-    private static PDO $pdo;
+    private static PDO $cnx;
 
     /**
      * Get the value of pdo
@@ -19,7 +19,9 @@ class Connexion
         if (!isset (self::$pdo)){
             // créer la connexion
             try {
-                self::$pdo = new PDO(DBDRIVER . ':host=' . DBHOST . ';port=' . DBPORT . ';dbname=' . DBNAME . ';charset=' . DBCHARSET, DBUSER, DBPASS);
+                self::$cnx = new PDO(DSN, USERNAME, PASSWORD);
+
+                
             } catch (Exception $e) {
                 // jamais en production car ça montre des infos
                 // sensibles
@@ -29,6 +31,6 @@ class Connexion
         } 
         // la connexion existe ici. Soit elle a été crée plu haut
         // ou elle existait déjà
-        return self::$pdo;
+        return self::$cnx;
     }
 }

@@ -28,7 +28,7 @@ class NoteManager
         $stmt->execute();
         // nous devons donner un id à l'entité qui vient d'être insérée:
         $id = $this->cnx->lastInsertId();
-        $note->hydrate(['id' =>$id]);
+        $note->setId($id);
        // pour debug
         // var_dump ($stmt->errorInfo());
     }

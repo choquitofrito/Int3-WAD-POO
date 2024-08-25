@@ -3,34 +3,16 @@
 class Utilisateur
 {
 
-    private int $id;
-    private string $nom;
-
-    private string $login;
-    private string $password;
-    private string $role;
-
     // relation
     private array $notes;
 
+    public function __construct(
+        private string $nom,
+        private string $login,
+        private string $password,
+        private string $role
+    ) {
 
-    public function hydrate(array $init)
-    {
-        foreach ($init as $propriete => $valeur) {
-            $nomSet = "set" . ucfirst($propriete);
-            if (!method_exists($this, $nomSet)) {
-                // à nous de voir selon le niveau de restriction...
-                // throw new Exception("La méthode {$nomSet} n'existe pas");
-            } else {
-                // appel au set
-                $this->$nomSet($valeur);
-            }
-        }
-    }
-
-    public function __construct(array $init)
-    {
-        $this->hydrate($init);
         // initialiser les dependances à vide
         $this->notes = [];
     }

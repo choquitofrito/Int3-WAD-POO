@@ -16,7 +16,7 @@ $password = $_POST['password'];
 
 // Chercher le login/pass dans la BD
 try {
-    $cnx = new PDO(DBDRIVER . ':host=' . DBHOST . ';port=' . DBPORT . ';dbname=' . DBNAME . ';charset=' . DBCHARSET, DBUSER, DBPASS);
+    $cnx = new PDO(DSN, USERNAME, PASSWORD);
 } catch (Exception $e) {
     // jamais en production car ça montre des infos
     // sensibles
@@ -34,16 +34,14 @@ $role = $res['role'];
 $passwordBD = $res['password'];
 
 // 3. Comparer le password reçu du formulaire avec le password de l'user obtenu de la BD
-if (password_verify ($password,$passwordBD) === true) {
+if (password_verify($password, $passwordBD) === true) {
     // 4. Si ok, aller vers l'accueil
     // après avoir mis le login dans la session
-    $_SESSION ['loginConnecte'] = $login;
-    $_SESSION ['role'] = $role;
+    $_SESSION['loginConnecte'] = $login;
+    $_SESSION['role'] = $role;
 
     header('location: ./index.php');
-
 } else {
     // 5. Si pas ok, aller vers la page de login en envoyant un message dans la URL
     header('location: ./login.php?error=badPass');
 }
-?>

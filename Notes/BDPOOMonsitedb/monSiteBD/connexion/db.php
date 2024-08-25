@@ -1,11 +1,4 @@
 <?php
-
-define('DBDRIVER','mysql');
-define('DBHOST','localhost');
-define('DBPORT',3306);
-define('DBNAME','wadfilms');
-define('DBCHARSET','utf8');
-define('DBUSER','root');
-define('DBPASS','');
-
-
+const DSN = "mysql:host=localhost;dbname=wadfilms;port=3306;charset=utf8";
+const USERNAME = "root";
+const PASSWORD = "";

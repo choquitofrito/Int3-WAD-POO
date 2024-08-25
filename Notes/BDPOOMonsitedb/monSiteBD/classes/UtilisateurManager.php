@@ -25,11 +25,10 @@ class UtilisateurManager
         $stmt->bindValue(":password", $password);
 
         $stmt->execute();
-        $id = $this->cnx->lastInsertId();
-        $utilisateur->hydrate(['id' =>$id]);
-
         // nous devons donner un id à l'entité qui vient d'être insérée:
-        // $utilisateur->hydrate (['id' => $this->cnx->lastInsertId()]);
+        $id = $this->cnx->lastInsertId();
+        $utilisateur->setId($id);
+
     }
 
     // select par titre, renvoie un tableau d'objets

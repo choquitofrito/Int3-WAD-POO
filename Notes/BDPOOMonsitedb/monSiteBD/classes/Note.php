@@ -3,37 +3,20 @@
 class Note
 {
 
-    private int $id;
-    private int $cotation;
 
     // relations
     private Utilisateur $utilisateur;
     private Film $film;
 
 
-    public function hydrate(array $init)
-    {
-        foreach ($init as $propriete => $valeur) {
-            $nomSet = "set" . ucfirst($propriete);
-            if (!method_exists($this, $nomSet)) {
-                // à nous de voir selon le niveau de restriction...
-                // throw new Exception("La méthode {$nomSet} n'existe pas");
-            }
-            else {
-                // appel au set
-                $this->$nomSet($valeur);
-            }
-        }
-    }
+    public function __construct(
+        private int $cotation
+    ) {}
 
-    public function __construct(array $init)
-    {
-        $this->hydrate($init);
-    }
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -43,7 +26,7 @@ class Note
      * Set the value of id
      *
      * @return  self
-     */ 
+     */
     public function setId($id)
     {
         $this->id = $id;
@@ -53,7 +36,7 @@ class Note
 
     /**
      * Get the value of cotation
-     */ 
+     */
     public function getCotation()
     {
         return $this->cotation;
@@ -63,7 +46,7 @@ class Note
      * Set the value of cotation
      *
      * @return  self
-     */ 
+     */
     public function setCotation($cotation)
     {
         $this->cotation = $cotation;
@@ -73,7 +56,7 @@ class Note
 
     /**
      * Get the value of utilisateur
-     */ 
+     */
     public function getUtilisateur()
     {
         return $this->utilisateur;
@@ -83,7 +66,7 @@ class Note
      * Set the value of utilisateur
      *
      * @return  self
-     */ 
+     */
     public function setUtilisateur($utilisateur)
     {
         $this->utilisateur = $utilisateur;
@@ -93,7 +76,7 @@ class Note
 
     /**
      * Get the value of film
-     */ 
+     */
     public function getFilm()
     {
         return $this->film;
@@ -103,7 +86,7 @@ class Note
      * Set the value of film
      *
      * @return  self
-     */ 
+     */
     public function setFilm($film)
     {
         $this->film = $film;

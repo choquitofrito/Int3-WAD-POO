@@ -1,7 +1,7 @@
 <?php
 echo "<div id='divPanier'>";
-if (isset ($_SESSION['panier'])){
-        var_dump ($_SESSION['panier']);
+if (isset($_SESSION['panier'])) {
+        var_dump($_SESSION['panier']);
 }
 echo "</div>";
 
@@ -12,7 +12,7 @@ echo "<button id='vider'>Vider Panier</button>";
 include "./connexion/db.php";
 
 try {
-        $cnx = new PDO(DBDRIVER . ':host=' . DBHOST . ';port=' . DBPORT . ';dbname=' . DBNAME . ';charset=' . DBCHARSET, DBUSER, DBPASS);
+        $cnx = new PDO(DSN, USERNAME, PASSWORD);
 } catch (Exception $e) {
         // jamais en production car ça montre des infos
         // sensibles
@@ -57,7 +57,7 @@ $arrayRes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($arrayRes as $film) {
 
         echo '<div class="card" style="width: 10rem;">';
-        echo '<a href="./detailFilm.php?id=' . $film['id']  . '"><img class="card-img-top" src="./img/'  . $film['image'] .   '" alt="' . $film['titre'] . '"></a>';
+        echo '<a href="./detailFilm.php?id=' . $film['id']  . '"><img class="card-img-top" src="./uploads/'  . $film['image'] .   '" alt="' . $film['titre'] . '"></a>';
         echo '<div class="card-body">';
         echo '<h5 class="card-title">' . $film['titre'] . '</h5>';
         echo '</div>';
@@ -67,9 +67,9 @@ foreach ($arrayRes as $film) {
         } else {
                 echo "<p class='coeur' data-id ='" . $film['id'] . "'>&#10085;</p>";
         }
-        echo '<p>Quantité<input data-id="'. $film['id'] . '" type="number"><button class="ajouter" data-id="'. $film['id']  .'">Rajouter</button></p>';
+        echo '<p>Quantité<input data-id="' . $film['id'] . '" type="number"><button class="ajouter" data-id="' . $film['id']  . '">Rajouter</button></p>';
         // echo '<p>Effacer<input data-id="'. $film['id'] . '" type="number"><button class="ajouter" data-id="'. $film['id']  .'">Rajouter</button></p>';
-        
+
         // accés reservé au ADMIN
         if ($_SESSION['role'] == "ADMIN") {
                 echo "<a href ='./effacerFilm.php?id=" . $film['id'] . "'>Effacer</a>&nbsp";

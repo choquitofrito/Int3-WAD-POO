@@ -3,36 +3,17 @@
 class Film
 {
 
-    private int $id;
-    private string $titre;
-    private int $duree;
-    private string $description;
-    private string $image;
-    private DateTime $dateSortie;
 
     // relation
     private array $notes;
 
-
-
-    public function hydrate(array $init)
-    {
-        foreach ($init as $propriete => $valeur) {
-            $nomSet = "set" . ucfirst($propriete);
-            if (!method_exists($this, $nomSet)) {
-                // à nous de voir selon le niveau de restriction...
-                // throw new Exception("La méthode {$nomSet} n'existe pas");
-            }
-            else {
-                // appel au set
-                $this->$nomSet($valeur);
-            }
-        }
-    }
-
-    public function __construct(array $init)
-    {
-        $this->hydrate($init);
+    public function __construct(
+        private string $titre,
+        private int $duree,
+        private string $description,
+        private DateTime $dateSortie,
+        private string $image,
+    ) {
         // initialiser les dependances à vide
         $this->notes = [];
     }
@@ -152,14 +133,14 @@ class Film
      */
     public function setDateSortie(string $dateSortie)
     {
-        $this->dateSortie = new DateTime ($dateSortie);
+        $this->dateSortie = new DateTime($dateSortie);
 
         return $this;
     }
 
     /**
      * Get the value of notes
-     */ 
+     */
     public function getNotes()
     {
         return $this->notes;
@@ -169,7 +150,7 @@ class Film
      * Set the value of notes
      *
      * @return  self
-     */ 
+     */
     public function setNotes($notes)
     {
         $this->notes = $notes;
@@ -177,7 +158,8 @@ class Film
         return $this;
     }
 
-    public function addNote (Note $note){
+    public function addNote(Note $note)
+    {
         $this->notes[] = $note;
         // créer le lien dans l'autre sens
         $note->setFilm($this);

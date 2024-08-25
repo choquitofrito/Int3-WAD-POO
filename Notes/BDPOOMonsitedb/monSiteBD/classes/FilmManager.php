@@ -13,7 +13,7 @@ class FilmManager
 
     public function insert(Film $film)
     {
-        
+
         $sql = "INSERT INTO film (id, titre, duree, description, dateSortie, image) ";
         $sql .= " VALUES (NULL , :titre, :duree, :description, :dateSortie, :image)";
 
@@ -24,10 +24,7 @@ class FilmManager
         $stmt->bindValue(":description", $film->getDescription());
         $stmt->bindValue(":dateSortie", $film->getDateSortie()->format("y-m-d"));
 
-        // CORRIGER pour l'upload
-        // obtenir un nom pour l'image`
-        // $nomFichier = $this->uploadImage();
-        $stmt->bindValue(":image", "");
+        $stmt->bindValue(":image", $film->getImage());
 
         // $stmt->bindValue(":image", $nomFichier);
 
@@ -37,9 +34,7 @@ class FilmManager
         // var_dump ($stmt->errorInfo());
         // nous devons donner un id à l'entité qui vient d'être insérée:
         $id = $this->cnx->lastInsertId();
-        $film->hydrate(['id' =>$id]);
-
-
+        $film->setId($id);
     }
 
     // select par titre, renvoie un tableau d'objets
@@ -150,7 +145,11 @@ class FilmManager
         // créer array d'objets
         $arrayObjetsFilms = [];
         foreach ($arrayFilms as $arrayFilm) {
-            $arrayObjetsFilms[] = new Film($arrayFilm);
+            $arrayObjetsFilms[] = new Film($arrayFilm['titre'], 
+                                        $arrayFilm['duree'], 
+                                        $arrayFilm['description'], 
+                                        new DateTime($arrayFilm['dateSortie']),
+                                        $arrayFilm['image']);
         }
         return $arrayObjetsFilms;
     }

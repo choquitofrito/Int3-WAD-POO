@@ -4,7 +4,7 @@
 include "./connexion/db.php";
 
 try {
-    $cnx = new PDO(DBDRIVER . ':host=' . DBHOST . ';port=' . DBPORT . ';dbname=' . DBNAME . ';charset=' . DBCHARSET, DBUSER, DBPASS);
+    $cnx = new PDO(DSN, USERNAME, PASSWORD);
 } catch (Exception $e) {
     // jamais en production car ça montre des infos
     // sensibles
@@ -37,9 +37,3 @@ $res = $stmt->fetch(PDO::FETCH_ASSOC);
     Date de sortie<input value="<?= $res['dateSortie'] ?>" type="date" name="dateSortie">
     <input type="submit" value="Modifier">
 </form>
-
-
-
-
-
-

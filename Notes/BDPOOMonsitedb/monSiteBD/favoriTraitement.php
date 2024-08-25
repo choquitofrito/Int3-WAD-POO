@@ -4,7 +4,7 @@ session_start();
 include "./connexion/db.php";
 
 try {
-    $cnx = new PDO(DBDRIVER . ':host=' . DBHOST . ';port=' . DBPORT . ';dbname=' . DBNAME . ';charset=' . DBCHARSET, DBUSER, DBPASS);
+    $cnx = new PDO(DSN, USERNAME, PASSWORD);
 } catch (Exception $e) {
     // jamais en production car ça montre des infos sensibles
     // echo $e->getMessage();

@@ -10,6 +10,9 @@
 <body>
     <?php
     include_once "./classes/Film.php";
+    include_once "./classes/FilmManager.php";
+    
+    // construction
     $film1 = new Film(
         [
             'titre' => 'Coco',
@@ -18,12 +21,26 @@
         ]
     );
 
-    $film1->hydrate([
-        'titre' => 'Sharknado',
-        'description' => 'film sur les requins qui volent'
-    ]);
+    // update
+    // $film1->hydrate([
+    //     'titre' => 'Sharknado',
+    //     'description' => 'film sur les requins qui volent'
+    // ]);
+
+    $filmManager = new FilmManager();
+    $filmManager->insert ($film1);
+
 
     var_dump ($film1);
+
+
+
+
+
+
+
+
+
 
     ?>
 </body>

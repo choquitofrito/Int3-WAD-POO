@@ -11,10 +11,7 @@ class Film {
 
 
     public function __construct (array $init){
-        foreach ($init as $key => $value){
-            $nomSet = "set" . ucfirst($key);  // setTitre setDuree
-            $this->$nomSet ($value);
-        }
+        $this->hydrate($init);
     }
 
 

@@ -9,8 +9,7 @@
 
 <body>
     <?php
-    include_once "./classes/Film.php";
-    include_once "./classes/FilmManager.php";
+    require "./vendor/autoload.php";
     
     // construction
     $film1 = new Film(

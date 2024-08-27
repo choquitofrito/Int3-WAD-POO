@@ -7,11 +7,9 @@
 </head>
 <body>
     <?php
+    require "./vendor/autoload.php";
 
-    // include_once ("./classes/FilmManager.php");
-    // include_once ("./classes/Film.php");
-
-    var_dump ($_POST);
+ 
 
     // 1. Obtenir les données du form
     $titre = $_POST['titre'];

@@ -41,7 +41,25 @@
     // effacer le film de la BD
     $filmManager->delete ($film1);
 
-    var_dump($filmManager->findAll()); // renvoyer tous les films
+    // on obtient tous les films
+    $arrayObjetsFilm = $filmManager->findAll(); // renvoyer tous les films
+    var_dump($arrayObjetsFilm);
+
+    // on prends un film pour le modifier et puis
+    // l'updater dans la BD
+    $unFilm = $arrayObjetsFilm[1];
+
+
+
+    $unFilm->setDuree(3);
+    $unFilm->setTitre("Bonjour!");
+
+    
+    $filmManager->update ($unFilm);
+    
+    var_dump ($unFilm);
+
+    // $filmManager->update ($film)
 
 
 

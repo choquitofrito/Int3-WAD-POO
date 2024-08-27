@@ -58,8 +58,23 @@ class FilmManager
                     new DateTime ($arrayFilm['dateSortie']);
             $arrayObjetsFilm[] = new Film($arrayFilm);
         }
-
-
         return ($arrayObjetsFilm);
     }
+
+    public function update (Film $unFilm){
+        $sql = "UPDATE film SET titre=:titre, duree=:duree, description=:description, dateSortie=:dateSortie WHERE id=:id";
+        
+        $stmt = $this->cnx->prepare($sql);
+        $stmt->bindValue(":titre", $unFilm->getTitre());
+        $stmt->bindValue(":duree", $unFilm->getDuree());
+        $stmt->bindValue(":description", $unFilm->getDescription());
+        $stmt->bindValue(":dateSortie", $unFilm->getDateSortie()->format("Y-m-d"));
+        $stmt->bindValue(":id", $unFilm->getId());
+
+        $stmt->execute();
+        
+    }
+
+
+
 }

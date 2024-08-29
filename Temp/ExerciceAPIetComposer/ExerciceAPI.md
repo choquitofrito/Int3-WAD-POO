@@ -18,17 +18,16 @@ Actions à réaliser :
 
 **4**. Créez une boucle dans le code principal pour afficher les données de chaque Personne, y comprises les possibles nationalités de chaque personne
 
-**5**. Si vous voulez afficher aussi des drapeaux, vous pouvez utiliser l'API **CountryFlags**:
+**5**. Si vous voulez afficher aussi des drapeaux, vous pouvez utiliser l'API **FlagsAPI**:
 
 ```
-https://countryflagsapi.com/png/be
+https://flagsapi.com/
 ```
 
 Exemple de code pour afficher un drapeau:
 
 ```php
-$src = "https://www.countryflagsapi.com/png/be";
-echo "<img src=" . $src . ">";
+echo "<img src='https://flagsapi.com/BE/flat/64.png'>";
 ```
 
 <br>

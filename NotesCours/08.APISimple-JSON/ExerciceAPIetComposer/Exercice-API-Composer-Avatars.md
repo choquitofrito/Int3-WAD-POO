@@ -2,6 +2,13 @@ Créez un code capable d'afficher des avatars générés automatiquement. Géné
 
 Pour les images des avatars utilisez l'API https://avatars.dicebear.com/
 
+
+Example: 
+
+https://www.dicebear.com/how-to-use/http-api/
+
+
+
 Pour générer les noms utilisez **FakerPHP/Faker** (librairie PHP à installer avec composer)
 
 Notes extra: 

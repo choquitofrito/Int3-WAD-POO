@@ -16,7 +16,7 @@
     $voiture1 = new Voiture("Mercedes", "Classe A", 250);
     $voiture2 = new Voiture("BMW", "M5", 300);
     
-    $voiture2
+
 
     $chaussure1 = new Chaussure();
     $chaussure1->marque = "Nike";

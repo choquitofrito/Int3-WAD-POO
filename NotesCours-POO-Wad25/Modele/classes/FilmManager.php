@@ -57,9 +57,24 @@ class FilmManager {
         }
 
         $stmt->execute();
-
+        // on obtient un array d'arrays
         $res= $stmt->fetchAll (PDO::FETCH_ASSOC);
-        return $res;
+        // on veut un array d'objects
+        $films = [];
+        foreach ($res as $cle => $arrayFilm){
+            // créer un film à partir d'un array qui contient les données d'un film
+            $film = new Film ($arrayFilm['titre'],
+                                $arrayFilm['duree'],
+                                $arrayFilm['description'],
+                                new DateTime($arrayFilm['dateSortie']),
+                                "");
+            // fixer l'id, car on ne l'a pas mis dans le constructeur
+            $film->setId ($arrayFilm['id']);
+            // rajouter le film (objet) à l'array d'objets 
+            $films[] = $film;
+        }
+        // on renvoie l'array d'objets
+        return $films;
 
     }
 

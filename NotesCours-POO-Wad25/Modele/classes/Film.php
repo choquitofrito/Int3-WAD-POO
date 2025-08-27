@@ -7,8 +7,7 @@ class Film {
     private DateTime $dateSortie;
     private string $image;
 
-    public function __construct(int $id, string $titre, int $duree, string $description, DateTime $dateSortie, string $image) {
-        $this->id = $id;
+    public function __construct(string $titre, int $duree, string $description, DateTime $dateSortie, string $image) {
         $this->titre = $titre;
         $this->duree = $duree;
         $this->description = $description;

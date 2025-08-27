@@ -15,16 +15,7 @@ $description = "description film";
 $dateSortieObject = new DateTime ("2025-08-27");
 $dateSortie = $dateSortieObject->format ("Y-m-d");
 
-// 1. Créer une connexion à la BD
-include "./connexion/db.php";
-try {
-    $cnx = new PDO(DSN, DBUSER, DBPASS);
-} catch (Exception $e) {
-    // jamais en production car ça montre des infos
-    // sensibles
-    echo $e->getMessage();
-    die();
-}
+
 $sql = "INSERT INTO film (id, titre, duree, description, dateSortie) ";
 $sql .= " VALUES (NULL , :titre, :duree, :description, :dateSortie)";
 

@@ -1,7 +1,4 @@
 <?php
-
-
-
 class FilmManager {
 
     private PDO $cnx;
